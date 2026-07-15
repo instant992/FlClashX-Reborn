@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/core/controller.dart';
-import 'package:fl_clash/state.dart';
-import 'package:fl_clash/widgets/widgets.dart';
+import 'package:flclashx/common/common.dart';
+import 'package:flclashx/core/controller.dart';
+import 'package:flclashx/state.dart';
+import 'package:flclashx/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 final _memoryStateNotifier = ValueNotifier<num>(0);

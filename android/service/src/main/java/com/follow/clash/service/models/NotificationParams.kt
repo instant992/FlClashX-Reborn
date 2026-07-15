@@ -1,4 +1,4 @@
-package com.follow.clash.service.models
+package com.follow.clashx.service.models
 
 import android.os.Parcel
 import android.os.Parcelable

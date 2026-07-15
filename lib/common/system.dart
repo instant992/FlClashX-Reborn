@@ -3,11 +3,11 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:ffi/ffi.dart';
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/plugins/app.dart';
-import 'package:fl_clash/state.dart';
-import 'package:fl_clash/widgets/input.dart';
+import 'package:flclashx/common/common.dart';
+import 'package:flclashx/enum/enum.dart';
+import 'package:flclashx/plugins/app.dart';
+import 'package:flclashx/state.dart';
+import 'package:flclashx/widgets/input.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 

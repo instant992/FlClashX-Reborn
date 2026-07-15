@@ -1,8 +1,8 @@
-package com.follow.clash.service.models
+package com.follow.clashx.service.models
 
-import com.follow.clash.common.GlobalState
-import com.follow.clash.common.formatBytes
-import com.follow.clash.core.Core
+import com.follow.clashx.common.GlobalState
+import com.follow.clashx.common.formatBytes
+import com.follow.clashx.core.Core
 import com.google.gson.Gson
 
 data class Traffic(

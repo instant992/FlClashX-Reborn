@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/core/core.dart';
-import 'package:fl_clash/database/database.dart';
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/models/models.dart';
-import 'package:fl_clash/plugins/app.dart';
-import 'package:fl_clash/plugins/service.dart';
-import 'package:fl_clash/providers/providers.dart';
-import 'package:fl_clash/state.dart';
+import 'package:flclashx/common/common.dart';
+import 'package:flclashx/core/core.dart';
+import 'package:flclashx/database/database.dart';
+import 'package:flclashx/enum/enum.dart';
+import 'package:flclashx/models/models.dart';
+import 'package:flclashx/plugins/app.dart';
+import 'package:flclashx/plugins/service.dart';
+import 'package:flclashx/providers/providers.dart';
+import 'package:flclashx/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

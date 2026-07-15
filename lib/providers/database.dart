@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:collection/collection.dart';
 import 'package:drift/drift.dart';
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/database/database.dart';
-import 'package:fl_clash/models/models.dart';
+import 'package:flclashx/common/common.dart';
+import 'package:flclashx/database/database.dart';
+import 'package:flclashx/models/models.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

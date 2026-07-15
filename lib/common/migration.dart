@@ -1,5 +1,5 @@
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/models/models.dart';
+import 'package:flclashx/common/common.dart';
+import 'package:flclashx/models/models.dart';
 
 class Migration {
   static Migration? _instance;

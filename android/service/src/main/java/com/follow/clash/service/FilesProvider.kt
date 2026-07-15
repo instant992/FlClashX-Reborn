@@ -1,4 +1,4 @@
-package com.follow.clash.service
+package com.follow.clashx.service
 
 import android.database.Cursor
 import android.database.MatrixCursor

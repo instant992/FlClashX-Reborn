@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:fl_clash/common/common.dart';
-import 'package:fl_clash/core/controller.dart';
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/manager/window_manager.dart';
-import 'package:fl_clash/providers/providers.dart';
-import 'package:fl_clash/state.dart';
+import 'package:flclashx/common/common.dart';
+import 'package:flclashx/core/controller.dart';
+import 'package:flclashx/enum/enum.dart';
+import 'package:flclashx/manager/window_manager.dart';
+import 'package:flclashx/providers/providers.dart';
+import 'package:flclashx/state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

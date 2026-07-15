@@ -1,11 +1,11 @@
-package com.follow.clash.service.modules
+package com.follow.clashx.service.modules
 
 import android.app.Service
 import android.content.Intent
 import android.os.PowerManager
 import androidx.core.content.getSystemService
-import com.follow.clash.common.receiveBroadcastFlow
-import com.follow.clash.core.Core
+import com.follow.clashx.common.receiveBroadcastFlow
+import com.follow.clashx.core.Core
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel

@@ -1,8 +1,8 @@
-package com.follow.clash.service.models
+package com.follow.clashx.service.models
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.follow.clash.common.AccessControlMode
+import com.follow.clashx.common.AccessControlMode
 import java.net.InetAddress
 
 data class AccessControlProps(

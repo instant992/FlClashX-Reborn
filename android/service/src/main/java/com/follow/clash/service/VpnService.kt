@@ -1,4 +1,4 @@
-package com.follow.clash.service
+package com.follow.clashx.service
 
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -10,17 +10,17 @@ import android.os.Parcel
 import android.os.RemoteException
 import android.util.Log
 import androidx.core.content.getSystemService
-import com.follow.clash.common.AccessControlMode
-import com.follow.clash.common.GlobalState
-import com.follow.clash.core.Core
-import com.follow.clash.service.models.VpnOptions
-import com.follow.clash.service.models.getIpv4RouteAddress
-import com.follow.clash.service.models.getIpv6RouteAddress
-import com.follow.clash.service.models.toCIDR
-import com.follow.clash.service.modules.NetworkObserveModule
-import com.follow.clash.service.modules.NotificationModule
-import com.follow.clash.service.modules.SuspendModule
-import com.follow.clash.service.modules.moduleLoader
+import com.follow.clashx.common.AccessControlMode
+import com.follow.clashx.common.GlobalState
+import com.follow.clashx.core.Core
+import com.follow.clashx.service.models.VpnOptions
+import com.follow.clashx.service.models.getIpv4RouteAddress
+import com.follow.clashx.service.models.getIpv6RouteAddress
+import com.follow.clashx.service.models.toCIDR
+import com.follow.clashx.service.modules.NetworkObserveModule
+import com.follow.clashx.service.modules.NotificationModule
+import com.follow.clashx.service.modules.SuspendModule
+import com.follow.clashx.service.modules.moduleLoader
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import java.net.InetSocketAddress

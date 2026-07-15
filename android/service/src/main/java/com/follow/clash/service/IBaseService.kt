@@ -1,8 +1,8 @@
-package com.follow.clash.service
+package com.follow.clashx.service
 
-import com.follow.clash.common.BroadcastAction
-import com.follow.clash.common.GlobalState
-import com.follow.clash.common.sendBroadcast
+import com.follow.clashx.common.BroadcastAction
+import com.follow.clashx.common.GlobalState
+import com.follow.clashx.common.sendBroadcast
 
 interface IBaseService {
     fun handleCreate() {

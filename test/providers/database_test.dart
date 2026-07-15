@@ -1,4 +1,4 @@
-import 'package:fl_clash/providers/database.dart';
+import 'package:flclashx/providers/database.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

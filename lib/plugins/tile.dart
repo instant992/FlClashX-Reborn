@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:fl_clash/common/constant.dart';
-import 'package:fl_clash/common/system.dart';
+import 'package:flclashx/common/constant.dart';
+import 'package:flclashx/common/system.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 

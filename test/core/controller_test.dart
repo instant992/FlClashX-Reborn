@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:fl_clash/core/controller.dart';
-import 'package:fl_clash/core/interface.dart';
-import 'package:fl_clash/enum/enum.dart';
-import 'package:fl_clash/models/models.dart';
+import 'package:flclashx/core/controller.dart';
+import 'package:flclashx/core/interface.dart';
+import 'package:flclashx/enum/enum.dart';
+import 'package:flclashx/models/models.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
