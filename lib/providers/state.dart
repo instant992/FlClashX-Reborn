@@ -1,4 +1,5 @@
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:collection/collection.dart';
 import 'package:flclashx/common/common.dart';
 import 'package:flclashx/core/controller.dart';
 import 'package:flclashx/database/database.dart';
@@ -529,7 +530,7 @@ ColorScheme genColorScheme(
   bool ignoreConfig = false,
 }) {
   final vm2 = ref.watch(
-    themeSettingProvider.select(
+    effectiveThemeProvider.select(
       (state) => VM2(state.primaryColor, state.schemeVariant),
     ),
   );
@@ -968,4 +969,40 @@ ProxiesStyleProps effectiveProxiesStyle(Ref ref) {
     }
   }
   return result;
+}
+
+@riverpod
+ThemeProps effectiveTheme(Ref ref) {
+  final base = ref.watch(themeSettingProvider);
+  final headers = ref.watch(providerHeadersProvider);
+  final hexHeader = headers['flclashx-hex'];
+  if (hexHeader == null || hexHeader.isEmpty) return base;
+  final parts = hexHeader.split(':');
+  final hexString = parts[0].trim().replaceAll('#', '');
+  if (hexString.length != 6 && hexString.length != 8) return base;
+  final colorValue = int.parse(
+    hexString.length == 6 ? 'FF$hexString' : hexString,
+    radix: 16,
+  );
+  DynamicSchemeVariant? newVariant;
+  bool enablePureBlack = false;
+  for (var i = 1; i < parts.length; i++) {
+    final part = parts[i].trim().toLowerCase();
+    if (part == 'pureblack') {
+      enablePureBlack = true;
+    } else {
+      final match = DynamicSchemeVariant.values.firstWhereOrNull(
+        (v) => v.name.toLowerCase() == part,
+      );
+      if (match != null) newVariant = match;
+    }
+  }
+  final updatedColors = [...base.primaryColors];
+  if (!updatedColors.contains(colorValue)) updatedColors.add(colorValue);
+  return base.copyWith(
+    primaryColor: colorValue,
+    primaryColors: updatedColors,
+    schemeVariant: newVariant ?? base.schemeVariant,
+    pureBlack: enablePureBlack,
+  );
 }

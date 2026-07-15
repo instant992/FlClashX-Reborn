@@ -137,7 +137,7 @@ class ApplicationState extends ConsumerState<Application> {
         final locale = ref.watch(
           appSettingProvider.select((state) => state.locale),
         );
-        final themeProps = ref.watch(themeSettingProvider);
+        final themeProps = ref.watch(effectiveThemeProvider);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           navigatorKey: globalState.navigatorKey,
