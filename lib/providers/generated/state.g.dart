@@ -3178,3 +3178,132 @@ final class SuspendProvider extends $FunctionalProvider<bool, bool, bool>
 }
 
 String _$suspendHash() => r'9ab9210f4f3c70f63d9858d492a9c09b3fb24bf1';
+
+@ProviderFor(providerHeaders)
+final providerHeadersProvider = ProviderHeadersProvider._();
+
+final class ProviderHeadersProvider
+    extends
+        $FunctionalProvider<
+          Map<String, String>,
+          Map<String, String>,
+          Map<String, String>
+        >
+    with $Provider<Map<String, String>> {
+  ProviderHeadersProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'providerHeadersProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$providerHeadersHash();
+
+  @$internal
+  @override
+  $ProviderElement<Map<String, String>> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  Map<String, String> create(Ref ref) {
+    return providerHeaders(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Map<String, String> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<Map<String, String>>(value),
+    );
+  }
+}
+
+String _$providerHeadersHash() => r'a1f025cf3e96c99b7c87071bc1a8d9119523b4f4';
+
+@ProviderFor(globalModeEnabled)
+final globalModeEnabledProvider = GlobalModeEnabledProvider._();
+
+final class GlobalModeEnabledProvider
+    extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
+  GlobalModeEnabledProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'globalModeEnabledProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$globalModeEnabledHash();
+
+  @$internal
+  @override
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    return globalModeEnabled(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
+  }
+}
+
+String _$globalModeEnabledHash() => r'0c511c18d93b0f1859ea5d5537cff3c63c288651';
+
+@ProviderFor(backgroundUrl)
+final backgroundUrlProvider = BackgroundUrlProvider._();
+
+final class BackgroundUrlProvider
+    extends $FunctionalProvider<String?, String?, String?>
+    with $Provider<String?> {
+  BackgroundUrlProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'backgroundUrlProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$backgroundUrlHash();
+
+  @$internal
+  @override
+  $ProviderElement<String?> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  String? create(Ref ref) {
+    return backgroundUrl(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String?>(value),
+    );
+  }
+}
+
+String _$backgroundUrlHash() => r'90e9370d1fbc3db0d34a3f191fdf7674b056fc54';

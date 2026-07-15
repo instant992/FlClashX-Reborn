@@ -56,6 +56,7 @@ abstract class Profile with _$Profile {
     @Default(OverwriteType.standard) OverwriteType overwriteType,
     int? scriptId,
     int? order,
+    @Default({}) Map<String, String> providerHeaders,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, Object?> json) =>
@@ -201,12 +202,43 @@ extension ProfileExtension on Profile {
     final response = await request.getFileResponseForUrl(url);
     final disposition = response.headers.value('content-disposition');
     final userinfo = response.headers.value('subscription-userinfo');
+
+    final providerHeaders = <String, String>{};
+    const headersToCollect = [
+      'announce',
+      'support-url',
+      'profile-update-interval',
+      'x-hwid-limit',
+    ];
+    for (final headerName in headersToCollect) {
+      final value = response.headers.value(headerName);
+      if (value != null && value.isNotEmpty) {
+        providerHeaders[headerName] = value;
+      }
+    }
+    response.headers.forEach((name, values) {
+      if (name.toLowerCase().startsWith('flclashx-') && values.isNotEmpty) {
+        providerHeaders[name.toLowerCase()] = values.first;
+      }
+    });
+
+    Duration? durationFromHeader;
+    final updateIntervalHeader = providerHeaders['profile-update-interval'];
+    if (updateIntervalHeader != null) {
+      final hours = int.tryParse(updateIntervalHeader);
+      if (hours != null && hours > 0) {
+        durationFromHeader = Duration(hours: hours);
+      }
+    }
+
     return copyWith(
       label: label.takeFirstValid([
         utils.getFileNameForDisposition(disposition),
         id.toString(),
       ]),
       subscriptionInfo: SubscriptionInfo.formHString(userinfo),
+      autoUpdateDuration: durationFromHeader ?? autoUpdateDuration,
+      providerHeaders: providerHeaders,
     ).saveFile(response.data ?? Uint8List.fromList([]));
   }
 

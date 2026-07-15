@@ -853,3 +853,22 @@ bool suspend(Ref ref) {
   final excludeSSIDs = ref.watch(excludeSSIDsProvider);
   return excludeSSIDs.contains(currentSSID);
 }
+
+@riverpod
+Map<String, String> providerHeaders(Ref ref) {
+  final profile = ref.watch(currentProfileProvider);
+  return profile?.providerHeaders ?? const {};
+}
+
+@riverpod
+bool globalModeEnabled(Ref ref) {
+  final headers = ref.watch(providerHeadersProvider);
+  final value = headers['flclashx-globalmode'];
+  return value?.toLowerCase() != 'false';
+}
+
+@riverpod
+String? backgroundUrl(Ref ref) {
+  final headers = ref.watch(providerHeadersProvider);
+  return headers['flclashx-background'];
+}

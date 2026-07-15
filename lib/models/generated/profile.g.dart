@@ -52,6 +52,11 @@ _Profile _$ProfileFromJson(Map<String, dynamic> json) => _Profile(
       OverwriteType.standard,
   scriptId: (json['scriptId'] as num?)?.toInt(),
   order: (json['order'] as num?)?.toInt(),
+  providerHeaders:
+      (json['providerHeaders'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as String),
+      ) ??
+      const {},
 );
 
 Map<String, dynamic> _$ProfileToJson(_Profile instance) => <String, dynamic>{
@@ -68,6 +73,7 @@ Map<String, dynamic> _$ProfileToJson(_Profile instance) => <String, dynamic>{
   'overwriteType': _$OverwriteTypeEnumMap[instance.overwriteType]!,
   'scriptId': instance.scriptId,
   'order': instance.order,
+  'providerHeaders': instance.providerHeaders,
 };
 
 const _$OverwriteTypeEnumMap = {
