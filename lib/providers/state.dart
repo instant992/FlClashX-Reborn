@@ -1006,3 +1006,22 @@ ThemeProps effectiveTheme(Ref ref) {
     pureBlack: enablePureBlack,
   );
 }
+
+@riverpod
+AppSettingProps effectiveAppSetting(Ref ref) {
+  final base = ref.watch(appSettingProvider);
+  final headers = ref.watch(providerHeadersProvider);
+  final settingsHeader = headers['flclashx-settings'];
+  if (settingsHeader == null || settingsHeader.isEmpty) return base;
+  final settings = settingsHeader
+      .split(',')
+      .map((e) => e.trim().toLowerCase())
+      .toSet();
+  return base.copyWith(
+    minimizeOnExit: settings.contains('minimize'),
+    autoLaunch: settings.contains('autorun'),
+    silentLaunch: settings.contains('shadowstart'),
+    autoRun: settings.contains('autostart'),
+    autoCheckUpdate: settings.contains('autoupdate'),
+  );
+}

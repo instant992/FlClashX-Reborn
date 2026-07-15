@@ -65,7 +65,7 @@ class CommonAction extends _$CommonAction {
   }
 
   Future<void> autoCheckUpdate() async {
-    if (!ref.read(appSettingProvider).autoCheckUpdate) return;
+    if (!ref.read(effectiveAppSettingProvider).autoCheckUpdate) return;
     final res = await request.checkForUpdate();
     checkUpdateResultHandle(data: res);
   }
@@ -172,7 +172,7 @@ class SetupAction extends _$SetupAction {
     }
     final status = isStart == true
         ? true
-        : ref.read(appSettingProvider).autoRun;
+        : ref.read(effectiveAppSettingProvider).autoRun;
     if (status == true) {
       await updateStatus(true, isInit: true);
     } else {
@@ -597,7 +597,7 @@ class SystemAction extends _$SystemAction {
     if (!system.isDesktop) {
       if (ref.read(backBlockProvider)) return;
     }
-    if (ref.read(appSettingProvider).minimizeOnExit || !exit) {
+    if (ref.read(effectiveAppSettingProvider).minimizeOnExit || !exit) {
       if (system.isDesktop) {
         await preferences.saveConfig(ref.read(configProvider));
       }

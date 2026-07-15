@@ -28,7 +28,7 @@ class _WindowContainerState extends ConsumerState<WindowManager>
   @override
   void initState() {
     super.initState();
-    ref.listenManual(appSettingProvider.select((state) => state.autoLaunch), (
+    ref.listenManual(effectiveAppSettingProvider.select((state) => state.autoLaunch), (
       prev,
       next,
     ) {

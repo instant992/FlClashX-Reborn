@@ -3568,3 +3568,46 @@ final class EffectiveThemeProvider
 }
 
 String _$effectiveThemeHash() => r'8b78a434d76190e3ffc108d29215fdd6bb70ed99';
+
+@ProviderFor(effectiveAppSetting)
+final effectiveAppSettingProvider = EffectiveAppSettingProvider._();
+
+final class EffectiveAppSettingProvider
+    extends
+        $FunctionalProvider<AppSettingProps, AppSettingProps, AppSettingProps>
+    with $Provider<AppSettingProps> {
+  EffectiveAppSettingProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'effectiveAppSettingProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$effectiveAppSettingHash();
+
+  @$internal
+  @override
+  $ProviderElement<AppSettingProps> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  AppSettingProps create(Ref ref) {
+    return effectiveAppSetting(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AppSettingProps value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AppSettingProps>(value),
+    );
+  }
+}
+
+String _$effectiveAppSettingHash() =>
+    r'dbfade1688a48e00fad62eb20c0fc49d57d94c3f';
