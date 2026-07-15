@@ -4,6 +4,7 @@ import 'package:flclashx/providers/action.dart';
 import 'package:flclashx/state.dart';
 import 'package:flclashx/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AddProfileView extends StatelessWidget {
   final BuildContext context;
@@ -39,23 +40,26 @@ class AddProfileView extends StatelessWidget {
 
   Future<void> _toAdd() async {
     final appLocalizations = context.appLocalizations;
+    final isTV = await system.isAndroidTV;
     final url = await globalState.showCommonDialog<String>(
-      child: InputDialog(
-        autovalidateMode: AutovalidateMode.onUnfocus,
-        title: appLocalizations.importFromURL,
-        labelText: appLocalizations.url,
-        value: '',
-        inputFormatters: TextInputLimits.limit(TextInputLimits.url),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return appLocalizations.emptyTip('').trim();
-          }
-          if (!value.isUrl) {
-            return appLocalizations.urlTip('').trim();
-          }
-          return null;
-        },
-      ),
+      child: isTV
+          ? const URLFormDialog()
+          : InputDialog(
+              autovalidateMode: AutovalidateMode.onUnfocus,
+              title: appLocalizations.importFromURL,
+              labelText: appLocalizations.url,
+              value: '',
+              inputFormatters: TextInputLimits.limit(TextInputLimits.url),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return appLocalizations.emptyTip('').trim();
+                }
+                if (!value.isUrl) {
+                  return appLocalizations.urlTip('').trim();
+                }
+                return null;
+              },
+            ),
     );
     if (url != null) {
       _handleAddProfileFormURL(url);
@@ -141,6 +145,16 @@ class _URLFormDialogState extends State<URLFormDialog> {
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 labelText: appLocalizations.url,
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.content_paste),
+                  tooltip: appLocalizations.paste,
+                  onPressed: () async {
+                    final data = await Clipboard.getData('text/plain');
+                    if (data?.text != null && data!.text!.isNotEmpty) {
+                      _urlController.text = data.text!;
+                    }
+                  },
+                ),
               ),
             ),
           ],
