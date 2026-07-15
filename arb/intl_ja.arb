@@ -563,5 +563,10 @@
   "hoursPlural": "時間",
   "hoursGenitive": "時間",
   "remainingSingular": "残り",
-  "remainingPlural": "残り"
+  "remainingPlural": "残り",
+  "overrideProviderSettings": "プロバイダ設定を上書き",
+  "overrideProviderSettingsDesc": "サブスクリプションのアプリ設定を無視",
+  "overrideNetworkSettings": "ネットワーク設定を上書き",
+  "overrideNetworkSettingsDesc": "サブスクリプションではなく独自のネットワーク設定を使用",
+  "managedByProvider": "プロバイダ管理"
 }

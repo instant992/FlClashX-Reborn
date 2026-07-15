@@ -563,5 +563,10 @@
   "hoursPlural": "hours",
   "hoursGenitive": "hours",
   "remainingSingular": "remaining",
-  "remainingPlural": "remaining"
+  "remainingPlural": "remaining",
+  "overrideProviderSettings": "Override provider settings",
+  "overrideProviderSettingsDesc": "Ignore subscription-provided app settings",
+  "overrideNetworkSettings": "Override network settings",
+  "overrideNetworkSettingsDesc": "Use your network settings instead of the subscription's",
+  "managedByProvider": "Managed by provider"
 }

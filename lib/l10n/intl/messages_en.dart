@@ -554,6 +554,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Used for UWP loopback unlocking",
     ),
     "loose": MessageLookupByLibrary.simpleMessage("Loose"),
+    "managedByProvider": MessageLookupByLibrary.simpleMessage(
+      "Managed by provider",
+    ),
     "matchSourceIp": MessageLookupByLibrary.simpleMessage("Match source IP"),
     "maxFailedTimes": MessageLookupByLibrary.simpleMessage("Max failed times"),
     "memoryInfo": MessageLookupByLibrary.simpleMessage("Memory info"),
@@ -642,6 +645,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "Turning it on will override the DNS options in the profile",
     ),
     "overrideMode": MessageLookupByLibrary.simpleMessage("Override mode"),
+    "overrideNetworkSettings": MessageLookupByLibrary.simpleMessage(
+      "Override network settings",
+    ),
+    "overrideNetworkSettingsDesc": MessageLookupByLibrary.simpleMessage(
+      "Use your network settings instead of the subscription\'s",
+    ),
+    "overrideProviderSettings": MessageLookupByLibrary.simpleMessage(
+      "Override provider settings",
+    ),
+    "overrideProviderSettingsDesc": MessageLookupByLibrary.simpleMessage(
+      "Ignore subscription-provided app settings",
+    ),
     "overrideScript": MessageLookupByLibrary.simpleMessage("Override script"),
     "overwriteTypeCustom": MessageLookupByLibrary.simpleMessage("Custom"),
     "overwriteTypeCustomDesc": MessageLookupByLibrary.simpleMessage(

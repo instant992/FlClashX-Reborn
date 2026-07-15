@@ -438,6 +438,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loopback": MessageLookupByLibrary.simpleMessage("ループバック解除ツール"),
     "loopbackDesc": MessageLookupByLibrary.simpleMessage("UWPループバック解除用"),
     "loose": MessageLookupByLibrary.simpleMessage("疎"),
+    "managedByProvider": MessageLookupByLibrary.simpleMessage("プロバイダ管理"),
     "matchSourceIp": MessageLookupByLibrary.simpleMessage("送信元IPをマッチング"),
     "maxFailedTimes": MessageLookupByLibrary.simpleMessage("最大失敗回数"),
     "memoryInfo": MessageLookupByLibrary.simpleMessage("メモリ情報"),
@@ -508,6 +509,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "有効化するとプロファイルのDNS設定を上書き",
     ),
     "overrideMode": MessageLookupByLibrary.simpleMessage("上書きモード"),
+    "overrideNetworkSettings": MessageLookupByLibrary.simpleMessage(
+      "ネットワーク設定を上書き",
+    ),
+    "overrideNetworkSettingsDesc": MessageLookupByLibrary.simpleMessage(
+      "サブスクリプションではなく独自のネットワーク設定を使用",
+    ),
+    "overrideProviderSettings": MessageLookupByLibrary.simpleMessage(
+      "プロバイダ設定を上書き",
+    ),
+    "overrideProviderSettingsDesc": MessageLookupByLibrary.simpleMessage(
+      "サブスクリプションのアプリ設定を無視",
+    ),
     "overrideScript": MessageLookupByLibrary.simpleMessage("上書きスクリプト"),
     "overwriteTypeCustom": MessageLookupByLibrary.simpleMessage("カスタム"),
     "overwriteTypeCustomDesc": MessageLookupByLibrary.simpleMessage(

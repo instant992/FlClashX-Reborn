@@ -390,6 +390,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loopback": MessageLookupByLibrary.simpleMessage("回环解锁工具"),
     "loopbackDesc": MessageLookupByLibrary.simpleMessage("用于UWP回环解锁"),
     "loose": MessageLookupByLibrary.simpleMessage("宽松"),
+    "managedByProvider": MessageLookupByLibrary.simpleMessage("由提供商管理"),
     "matchSourceIp": MessageLookupByLibrary.simpleMessage("匹配来源IP"),
     "maxFailedTimes": MessageLookupByLibrary.simpleMessage("最大失败次数"),
     "memoryInfo": MessageLookupByLibrary.simpleMessage("内存信息"),
@@ -446,6 +447,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "overrideDns": MessageLookupByLibrary.simpleMessage("覆写DNS"),
     "overrideDnsDesc": MessageLookupByLibrary.simpleMessage("开启后将覆盖配置中的DNS选项"),
     "overrideMode": MessageLookupByLibrary.simpleMessage("覆写模式"),
+    "overrideNetworkSettings": MessageLookupByLibrary.simpleMessage("覆盖网络设置"),
+    "overrideNetworkSettingsDesc": MessageLookupByLibrary.simpleMessage(
+      "使用您的网络设置而非订阅的设置",
+    ),
+    "overrideProviderSettings": MessageLookupByLibrary.simpleMessage("覆盖提供商设置"),
+    "overrideProviderSettingsDesc": MessageLookupByLibrary.simpleMessage(
+      "忽略订阅提供的应用设置",
+    ),
     "overrideScript": MessageLookupByLibrary.simpleMessage("覆写脚本"),
     "overwriteTypeCustom": MessageLookupByLibrary.simpleMessage("自定义"),
     "overwriteTypeCustomDesc": MessageLookupByLibrary.simpleMessage(

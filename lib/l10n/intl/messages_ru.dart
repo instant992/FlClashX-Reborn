@@ -575,6 +575,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Используется для разблокировки Loopback UWP",
     ),
     "loose": MessageLookupByLibrary.simpleMessage("Свободный"),
+    "managedByProvider": MessageLookupByLibrary.simpleMessage(
+      "Управляется провайдером",
+    ),
     "matchSourceIp": MessageLookupByLibrary.simpleMessage(
       "Сопоставить исходный IP",
     ),
@@ -672,6 +675,18 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "overrideMode": MessageLookupByLibrary.simpleMessage(
       "Режим переопределения",
+    ),
+    "overrideNetworkSettings": MessageLookupByLibrary.simpleMessage(
+      "Переопределить сетевые настройки",
+    ),
+    "overrideNetworkSettingsDesc": MessageLookupByLibrary.simpleMessage(
+      "Использовать ваши сетевые настройки вместо настроек подписки",
+    ),
+    "overrideProviderSettings": MessageLookupByLibrary.simpleMessage(
+      "Переопределить настройки провайдера",
+    ),
+    "overrideProviderSettingsDesc": MessageLookupByLibrary.simpleMessage(
+      "Игнорировать настройки приложения из подписки",
     ),
     "overrideScript": MessageLookupByLibrary.simpleMessage(
       "Скрипт переопределения",

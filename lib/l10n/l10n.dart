@@ -4583,6 +4583,56 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Override provider settings`
+  String get overrideProviderSettings {
+    return Intl.message(
+      'Override provider settings',
+      name: 'overrideProviderSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ignore subscription-provided app settings`
+  String get overrideProviderSettingsDesc {
+    return Intl.message(
+      'Ignore subscription-provided app settings',
+      name: 'overrideProviderSettingsDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Override network settings`
+  String get overrideNetworkSettings {
+    return Intl.message(
+      'Override network settings',
+      name: 'overrideNetworkSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use your network settings instead of the subscription's`
+  String get overrideNetworkSettingsDesc {
+    return Intl.message(
+      'Use your network settings instead of the subscription\'s',
+      name: 'overrideNetworkSettingsDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Managed by provider`
+  String get managedByProvider {
+    return Intl.message(
+      'Managed by provider',
+      name: 'managedByProvider',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

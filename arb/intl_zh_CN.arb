@@ -563,5 +563,10 @@
   "hoursPlural": "小时",
   "hoursGenitive": "小时",
   "remainingSingular": "剩余",
-  "remainingPlural": "剩余"
+  "remainingPlural": "剩余",
+  "overrideProviderSettings": "覆盖提供商设置",
+  "overrideProviderSettingsDesc": "忽略订阅提供的应用设置",
+  "overrideNetworkSettings": "覆盖网络设置",
+  "overrideNetworkSettingsDesc": "使用您的网络设置而非订阅的设置",
+  "managedByProvider": "由提供商管理"
 }

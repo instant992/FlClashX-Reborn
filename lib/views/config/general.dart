@@ -661,19 +661,62 @@ class ExternalControllerItem extends ConsumerWidget {
   }
 }
 
+class _NetworkManagedBox extends ConsumerWidget {
+  final Widget child;
+  const _NetworkManagedBox({required this.child});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final enabled = ref.watch(
+      appSettingProvider.select((state) => state.overrideNetworkSettings),
+    );
+    if (enabled) return child;
+    return Opacity(
+      opacity: 0.5,
+      child: AbsorbPointer(child: child),
+    );
+  }
+}
+
+class OverrideNetworkSettingsItem extends ConsumerWidget {
+  const OverrideNetworkSettingsItem({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appLocalizations = context.appLocalizations;
+    final value = ref.watch(
+      appSettingProvider.select((state) => state.overrideNetworkSettings),
+    );
+    return ListItem.switchItem(
+      title: Text(appLocalizations.overrideNetworkSettings),
+      subtitle: Text(appLocalizations.overrideNetworkSettingsDesc),
+      delegate: SwitchDelegate(
+        value: value,
+        onChanged: (v) {
+          ref
+              .read(appSettingProvider.notifier)
+              .update((state) => state.copyWith(overrideNetworkSettings: v));
+        },
+      ),
+    );
+  }
+}
+
 final generalItems = <Widget>[
-  const LogLevelItem(),
+  const OverrideNetworkSettingsItem(),
+  const _NetworkManagedBox(child: LogLevelItem()),
   const UaItem(),
-  if (system.isDesktop) const KeepAliveIntervalItem(),
+  if (system.isDesktop)
+    const _NetworkManagedBox(child: KeepAliveIntervalItem()),
   const TestUrlItem(),
-  const PortItem(),
+  const _NetworkManagedBox(child: PortItem()),
   const HostsItem(),
-  const Ipv6Item(),
-  const AllowLanItem(),
-  const UnifiedDelayItem(),
+  const _NetworkManagedBox(child: Ipv6Item()),
+  const _NetworkManagedBox(child: AllowLanItem()),
+  const _NetworkManagedBox(child: UnifiedDelayItem()),
   const AppendSystemDNSItem(),
-  const FindProcessItem(),
-  const TcpConcurrentItem(),
+  const _NetworkManagedBox(child: FindProcessItem()),
+  const _NetworkManagedBox(child: TcpConcurrentItem()),
   const GeodataLoaderItem(),
   const ExternalControllerItem(),
 ].separated(const Divider(height: 0)).toList();

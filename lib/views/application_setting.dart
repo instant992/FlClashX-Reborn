@@ -1,8 +1,50 @@
 import 'package:flclashx/common/common.dart';
 import 'package:flclashx/providers/config.dart';
+import 'package:flclashx/providers/providers.dart';
 import 'package:flclashx/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class _ProviderManagedBox extends ConsumerWidget {
+  final Widget child;
+  const _ProviderManagedBox({required this.child});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final enabled = ref.watch(
+      appSettingProvider.select((state) => state.overrideProviderSettings),
+    );
+    if (enabled) return child;
+    return Opacity(
+      opacity: 0.5,
+      child: AbsorbPointer(child: child),
+    );
+  }
+}
+
+class OverrideProviderSettingsItem extends ConsumerWidget {
+  const OverrideProviderSettingsItem({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appLocalizations = context.appLocalizations;
+    final value = ref.watch(
+      appSettingProvider.select((state) => state.overrideProviderSettings),
+    );
+    return ListItem.switchItem(
+      title: Text(appLocalizations.overrideProviderSettings),
+      subtitle: Text(appLocalizations.overrideProviderSettingsDesc),
+      delegate: SwitchDelegate(
+        value: value,
+        onChanged: (v) {
+          ref
+              .read(appSettingProvider.notifier)
+              .update((state) => state.copyWith(overrideProviderSettings: v));
+        },
+      ),
+    );
+  }
+}
 
 class CloseConnectionsItem extends ConsumerWidget {
   const CloseConnectionsItem({super.key});
@@ -274,19 +316,20 @@ class ApplicationSettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> items = [
-      const MinimizeItem(),
+      const OverrideProviderSettingsItem(),
+      const _ProviderManagedBox(child: MinimizeItem()),
       if (system.isDesktop) ...[
-        const AutoLaunchItem(),
-        const SilentLaunchItem(),
+        const _ProviderManagedBox(child: AutoLaunchItem()),
+        const _ProviderManagedBox(child: SilentLaunchItem()),
       ],
-      const AutoRunItem(),
+      const _ProviderManagedBox(child: AutoRunItem()),
       if (system.isAndroid) ...[const HiddenItem()],
       const AnimateTabItem(),
       const OpenLogsItem(),
       const CloseConnectionsItem(),
       const UsageItem(),
       if (system.isAndroid) const CrashlyticsItem(),
-      const AutoCheckUpdateItem(),
+      const _ProviderManagedBox(child: AutoCheckUpdateItem()),
     ];
     return BaseScaffold(
       title: context.appLocalizations.application,

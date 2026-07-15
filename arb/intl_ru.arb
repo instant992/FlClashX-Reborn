@@ -563,5 +563,10 @@
   "hoursPlural": "часов",
   "hoursGenitive": "часов",
   "remainingSingular": "остался",
-  "remainingPlural": "осталось"
+  "remainingPlural": "осталось",
+  "overrideProviderSettings": "Переопределить настройки провайдера",
+  "overrideProviderSettingsDesc": "Игнорировать настройки приложения из подписки",
+  "overrideNetworkSettings": "Переопределить сетевые настройки",
+  "overrideNetworkSettingsDesc": "Использовать ваши сетевые настройки вместо настроек подписки",
+  "managedByProvider": "Управляется провайдером"
 }
