@@ -4,9 +4,11 @@ import 'dart:io';
 import 'package:crypto/crypto.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flclashx/common/common.dart';
+import 'package:flutter/services.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:win32_registry/win32_registry.dart';
+
 class DeviceDetails {
   DeviceDetails({
     this.hwid,
@@ -25,6 +27,8 @@ class DeviceDetails {
 class DeviceInfoService {
   final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
   static const String _hwidStorageKey = 'app_persistent_hwid';
+  static const MethodChannel _channel =
+      MethodChannel('$packageName/device_id');
 
   String _generateCompact16CharId(String fullId) {
     final bytes = utf8.encode(fullId);
@@ -32,6 +36,17 @@ class DeviceInfoService {
     return hash.toString().substring(0, 16).toUpperCase();
   }
 
+  Future<String?> _getAndroidId() async {
+    try {
+      final String? androidId = await _channel.invokeMethod('getAndroidId');
+      if (androidId != null && androidId.isNotEmpty) {
+        return androidId;
+      }
+      return null;
+    } catch (_) {
+      return null;
+    }
+  }
   Future<String?> _getWindowsMachineGuid() async {
     try {
       const keyPath = r'SOFTWARE\Microsoft\Cryptography';
@@ -53,8 +68,10 @@ class DeviceInfoService {
         final info = await _deviceInfoPlugin.windowsInfo;
         return '${info.computerName}-${info.deviceId}-${info.productId}';
       } else if (Platform.isAndroid) {
-        // TODO(Phase 6): use ANDROID_ID via a device_id MethodChannel once
-        // the Android native side is ported. For now use Build fields.
+        final androidId = await _getAndroidId();
+        if (androidId != null && androidId.isNotEmpty) {
+          return androidId;
+        }
         final info = await _deviceInfoPlugin.androidInfo;
         return '${info.brand}-${info.device}-${info.hardware}-${info.id}';
       } else if (Platform.isLinux) {
