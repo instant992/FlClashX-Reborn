@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flclashx/l10n/l10n.dart';
 import 'package:flclashx/models/models.dart';
+import 'package:flclashx/plugins/app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SubscriptionNotificationService {
@@ -85,8 +86,12 @@ class SubscriptionNotificationService {
     required String actionLabel,
     required String actionUrl,
   }) async {
-    // TODO(Phase 6): wire to Android native notification channel via the
-    // AIDL service plugin once the Android native side is ported.
+    await app?.showSubscriptionNotification(
+      title: title,
+      message: message,
+      actionLabel: actionLabel,
+      actionUrl: actionUrl,
+    );
   }
 
   static String _getPrefsKey(int profileId, int days) =>

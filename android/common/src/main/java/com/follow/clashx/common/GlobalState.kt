@@ -10,9 +10,13 @@ import kotlinx.coroutines.Dispatchers
 
 object GlobalState : CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
-    const val NOTIFICATION_CHANNEL = "FlClash"
+    const val NOTIFICATION_CHANNEL = "FlClashX"
 
     const val NOTIFICATION_ID = 1
+
+    const val SUBSCRIPTION_NOTIFICATION_CHANNEL = "FlClashX_Subscription"
+
+    const val SUBSCRIPTION_NOTIFICATION_ID = 2
 
     val packageName: String
         get() = application.packageName

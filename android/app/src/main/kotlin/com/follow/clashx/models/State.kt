@@ -7,11 +7,13 @@ data class SharedState(
     val startTip: String = "Starting VPN...",
     val stopTip: String = "Stopping VPN...",
     val crashlytics: Boolean = true,
-    val currentProfileName: String = "FlClash",
+    val currentProfileName: String = "FlClashX",
     val stopText: String = "Stop",
     val onlyStatisticsProxy: Boolean = false,
     val vpnOptions: VpnOptions? = null,
     val setupParams: SetupParams? = null,
+    val serviceName: String = "",
+    val activeServer: String = "",
 )
 
 data class SetupParams(

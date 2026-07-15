@@ -2131,7 +2131,7 @@ final class SharedStateProvider
   }
 }
 
-String _$sharedStateHash() => r'eeae9ab857cd6263f761290054774460f9e86069';
+String _$sharedStateHash() => r'74103b6eae426a2dde07261fe95de93ca52f183d';
 
 @ProviderFor(overlayTopOffset)
 final overlayTopOffsetProvider = OverlayTopOffsetProvider._();
@@ -3178,6 +3178,90 @@ final class SuspendProvider extends $FunctionalProvider<bool, bool, bool>
 }
 
 String _$suspendHash() => r'9ab9210f4f3c70f63d9858d492a9c09b3fb24bf1';
+
+@ProviderFor(foregroundServiceName)
+final foregroundServiceNameProvider = ForegroundServiceNameProvider._();
+
+final class ForegroundServiceNameProvider
+    extends $FunctionalProvider<String?, String?, String?>
+    with $Provider<String?> {
+  ForegroundServiceNameProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'foregroundServiceNameProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$foregroundServiceNameHash();
+
+  @$internal
+  @override
+  $ProviderElement<String?> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  String? create(Ref ref) {
+    return foregroundServiceName(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String?>(value),
+    );
+  }
+}
+
+String _$foregroundServiceNameHash() =>
+    r'1b8cb561bb04a5875bcc486a4ecb7c0d4b89a304';
+
+@ProviderFor(foregroundActiveServer)
+final foregroundActiveServerProvider = ForegroundActiveServerProvider._();
+
+final class ForegroundActiveServerProvider
+    extends $FunctionalProvider<String?, String?, String?>
+    with $Provider<String?> {
+  ForegroundActiveServerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'foregroundActiveServerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$foregroundActiveServerHash();
+
+  @$internal
+  @override
+  $ProviderElement<String?> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  String? create(Ref ref) {
+    return foregroundActiveServer(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<String?>(value),
+    );
+  }
+}
+
+String _$foregroundActiveServerHash() =>
+    r'8f723762dfd55befe94667ce09efd65d8c4a467a';
 
 @ProviderFor(providerHeaders)
 final providerHeadersProvider = ProviderHeadersProvider._();

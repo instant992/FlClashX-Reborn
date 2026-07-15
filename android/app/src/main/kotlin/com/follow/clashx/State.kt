@@ -117,11 +117,16 @@ object State {
 
     suspend fun syncState() {
         GlobalState.setCrashlytics(sharedState.crashlytics)
+        val title = when (sharedState.activeServer.isNotEmpty()) {
+            true -> "${sharedState.currentProfileName} / ${sharedState.activeServer}"
+            false -> sharedState.currentProfileName
+        }
         Service.updateNotificationParams(
             NotificationParams(
-                title = sharedState.currentProfileName,
+                title = title,
                 stopText = sharedState.stopText,
-                onlyStatisticsProxy = sharedState.onlyStatisticsProxy
+                onlyStatisticsProxy = sharedState.onlyStatisticsProxy,
+                subtext = sharedState.serviceName
             )
         )
         Service.setCrashlytics(sharedState.crashlytics)

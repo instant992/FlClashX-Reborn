@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:collection/collection.dart';
 import 'package:flclashx/common/common.dart';
@@ -623,6 +625,8 @@ SharedState sharedState(Ref ref) {
   final testUrl = appSettingVM3.c;
   final stack = clashConfigVM2.a;
   final port = clashConfigVM2.b;
+  final serviceName = ref.watch(foregroundServiceNameProvider) ?? '';
+  final activeServer = ref.watch(foregroundActiveServerProvider) ?? '';
   return SharedState(
     currentProfileName: currentProfileName,
     onlyStatisticsProxy: onlyStatisticsProxy,
@@ -630,6 +634,8 @@ SharedState sharedState(Ref ref) {
     crashlytics: crashlytics,
     stopTip: currentAppLocalizations.stopVpn,
     startTip: currentAppLocalizations.startVpn,
+    serviceName: serviceName,
+    activeServer: activeServer,
     setupParams: SetupParams(selectedMap: selectedMap, testUrl: testUrl),
     vpnOptions: VpnOptions(
       enable: vpnSetting.enable,
@@ -856,6 +862,39 @@ bool suspend(Ref ref) {
   final currentSSID = ref.watch(currentSSIDProvider);
   final excludeSSIDs = ref.watch(excludeSSIDsProvider);
   return excludeSSIDs.contains(currentSSID);
+}
+
+@riverpod
+String? foregroundServiceName(Ref ref) {
+  final headers = ref.watch(providerHeadersProvider);
+  final svc = headers['flclashx-servicename'];
+  if (svc == null || svc.isEmpty) return null;
+  try {
+    final normalized = base64.normalize(svc);
+    return utf8.decode(base64.decode(normalized)).trim();
+  } catch (_) {
+    return svc.trim();
+  }
+}
+
+@riverpod
+String? foregroundActiveServer(Ref ref) {
+  final headers = ref.watch(providerHeadersProvider);
+  final groupName = headers['flclashx-serverinfo'];
+  if (groupName == null || groupName.isEmpty) return null;
+  String? name;
+  try {
+    final normalized = base64.normalize(groupName);
+    name = utf8.decode(base64.decode(normalized)).trim();
+  } catch (_) {
+    name = groupName.trim();
+  }
+  if (name.isEmpty) return null;
+  final group = ref.watch(
+    currentGroupsStateProvider.select((state) => state.value.getGroup(name!)),
+  );
+  if (group == null) return null;
+  return group.now ?? '';
 }
 
 @riverpod

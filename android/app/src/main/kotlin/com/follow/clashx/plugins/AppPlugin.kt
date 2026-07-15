@@ -3,15 +3,20 @@ package com.follow.clashx.plugins
 import android.Manifest
 import android.app.Activity
 import android.app.ActivityManager
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.ComponentInfo
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.net.VpnService
 import android.os.Build
 import android.os.PowerManager
 import android.provider.Settings
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.pm.ShortcutInfoCompat
@@ -160,6 +165,10 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
                 result.success(true)
             }
 
+            "showSubscriptionNotification" -> {
+                handleShowSubscriptionNotification(call, result)
+            }
+
             "isBatteryOptimizationDisabled" -> {
                 result.success(isBatteryOptimizationDisabled())
             }
@@ -209,6 +218,61 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
 
     private fun tip(message: String?) {
         GlobalState.application.showToast(message)
+    }
+
+    private fun handleShowSubscriptionNotification(call: MethodCall, result: Result) {
+        try {
+            val title = call.argument<String>("title") ?: ""
+            val message = call.argument<String>("message") ?: ""
+            val actionLabel = call.argument<String>("actionLabel") ?: ""
+            val actionUrl = call.argument<String>("actionUrl") ?: ""
+            showSubscriptionNotification(title, message, actionLabel, actionUrl)
+            result.success(true)
+        } catch (e: Exception) {
+            result.error("NOTIFICATION_ERROR", e.message, null)
+        }
+    }
+
+    private fun showSubscriptionNotification(
+        title: String,
+        message: String,
+        actionLabel: String,
+        actionUrl: String,
+    ) {
+        val app = GlobalState.application
+        val manager = app.getSystemService(NotificationManager::class.java) ?: return
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            var channel = manager.getNotificationChannel(
+                GlobalState.SUBSCRIPTION_NOTIFICATION_CHANNEL
+            )
+            if (channel == null) {
+                channel = NotificationChannel(
+                    GlobalState.SUBSCRIPTION_NOTIFICATION_CHANNEL,
+                    "SUBSCRIPTION_CHANNEL",
+                    NotificationManager.IMPORTANCE_DEFAULT
+                )
+                manager.createNotificationChannel(channel)
+            }
+        }
+        val builder = NotificationCompat.Builder(
+            app, GlobalState.SUBSCRIPTION_NOTIFICATION_CHANNEL
+        )
+            .setSmallIcon(R.drawable.ic_service)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setAutoCancel(true)
+        if (actionLabel.isNotEmpty() && actionUrl.isNotEmpty()) {
+            val intent = Intent(Intent.ACTION_VIEW, actionUrl.toUri())
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            val pendingIntent = PendingIntent.getActivity(
+                app, 0, intent,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
+            builder.addAction(0, actionLabel, pendingIntent)
+        }
+        manager.notify(
+            GlobalState.SUBSCRIPTION_NOTIFICATION_ID, builder.build()
+        )
     }
 
     private fun isBatteryOptimizationDisabled(): Boolean {

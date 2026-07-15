@@ -102,6 +102,20 @@ class App {
     if (!Platform.isAndroid) return false;
     return methodChannel.invokeMethod<bool>('openAppSettings');
   }
+
+  Future<bool?> showSubscriptionNotification({
+    required String title,
+    required String message,
+    String actionLabel = '',
+    String actionUrl = '',
+  }) {
+    return methodChannel.invokeMethod<bool>('showSubscriptionNotification', {
+      'title': title,
+      'message': message,
+      'actionLabel': actionLabel,
+      'actionUrl': actionUrl,
+    });
+  }
 }
 
 final app = system.isAndroid ? App() : null;
