@@ -92,7 +92,7 @@ double getScrollToSelectedOffset({
   final ref = globalState.container;
   final columns = ref.read(proxiesColumnsProvider);
   final proxyCardType = ref.read(
-    proxiesStyleSettingProvider.select((state) => state.cardType),
+    effectiveProxiesStyleProvider.select((state) => state.cardType),
   );
   final selectedProxyName = ref.read(selectedProxyNameProvider(groupName));
   final findSelectedIndex = proxies.indexWhere(

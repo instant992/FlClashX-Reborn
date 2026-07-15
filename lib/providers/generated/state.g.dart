@@ -523,7 +523,7 @@ final class ProxiesActionsStateProvider
 }
 
 String _$proxiesActionsStateHash() =>
-    r'84f8a94706233ff5d4b8a456291a4e66c1381c62';
+    r'6fa008bfaf96191fcf1aec5b165900e7a8953d9d';
 
 @ProviderFor(profilesState)
 final profilesStateProvider = ProfilesStateProvider._();
@@ -687,7 +687,7 @@ final class ProxiesListStateProvider
   }
 }
 
-String _$proxiesListStateHash() => r'4d83ff3e3d337c9a6eadddfa747c11939676b8bd';
+String _$proxiesListStateHash() => r'1bea5ee7ed9de40197f87aecd05166bf1e6c00bf';
 
 @ProviderFor(proxiesTabState)
 final proxiesTabStateProvider = ProxiesTabStateProvider._();
@@ -729,7 +729,7 @@ final class ProxiesTabStateProvider
   }
 }
 
-String _$proxiesTabStateHash() => r'b16734b2578c4e9a91880af8af41faa2e293b257';
+String _$proxiesTabStateHash() => r'd930b40d4be77864077011eb51a51f904c648305';
 
 @ProviderFor(isStart)
 final isStartProvider = IsStartProvider._();
@@ -884,7 +884,7 @@ final class ProxyGroupSelectorStateProvider
 }
 
 String _$proxyGroupSelectorStateHash() =>
-    r'd393702a1fea16f8ab0362c2888b70300795e829';
+    r'56fd438063fd49ac2b645c51b47f3bd294437fe1';
 
 final class ProxyGroupSelectorStateFamily extends $Family
     with $FunctionalFamilyOverride<ProxyGroupSelectorState, (String, String)> {
@@ -1501,7 +1501,7 @@ final class ProxiesColumnsProvider extends $FunctionalProvider<int, int, int>
   }
 }
 
-String _$proxiesColumnsHash() => r'e93f980da3d857bd38957635ef944a0db60aaef3';
+String _$proxiesColumnsHash() => r'ea4760e95e34f02555bffdfde32f5f6e52291ba8';
 
 @ProviderFor(realSelectedProxyState)
 final realSelectedProxyStateProvider = RealSelectedProxyStateFamily._();
@@ -2090,7 +2090,7 @@ final class NeedUpdateGroupsProvider
   }
 }
 
-String _$needUpdateGroupsHash() => r'7913b7b74caf9f2c72fd32729d52b7c6ac9258e8';
+String _$needUpdateGroupsHash() => r'59c355bcd87eca3017c94140cdfe4f1b7bcb1612';
 
 @ProviderFor(sharedState)
 final sharedStateProvider = SharedStateProvider._();
@@ -3479,3 +3479,51 @@ final class EffectiveDashboardWidgetsProvider
 
 String _$effectiveDashboardWidgetsHash() =>
     r'b62cf1ad32230e12fc0f3f8c2720068ec340b95e';
+
+@ProviderFor(effectiveProxiesStyle)
+final effectiveProxiesStyleProvider = EffectiveProxiesStyleProvider._();
+
+final class EffectiveProxiesStyleProvider
+    extends
+        $FunctionalProvider<
+          ProxiesStyleProps,
+          ProxiesStyleProps,
+          ProxiesStyleProps
+        >
+    with $Provider<ProxiesStyleProps> {
+  EffectiveProxiesStyleProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'effectiveProxiesStyleProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$effectiveProxiesStyleHash();
+
+  @$internal
+  @override
+  $ProviderElement<ProxiesStyleProps> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  ProxiesStyleProps create(Ref ref) {
+    return effectiveProxiesStyle(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(ProxiesStyleProps value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<ProxiesStyleProps>(value),
+    );
+  }
+}
+
+String _$effectiveProxiesStyleHash() =>
+    r'fc352bf774f801d8c8f24a194106c60baf467083';

@@ -110,7 +110,7 @@ class _ProxiesViewState extends ConsumerState<ProxiesView> {
       }
     }, fireImmediately: true);
     ref.listenManual(
-      proxiesStyleSettingProvider.select(
+      effectiveProxiesStyleProvider.select(
         (state) => state.type == ProxiesType.tab,
       ),
       (prev, next) {
@@ -135,7 +135,7 @@ class _ProxiesViewState extends ConsumerState<ProxiesView> {
   @override
   Widget build(BuildContext context) {
     final proxiesType = ref.watch(
-      proxiesStyleSettingProvider.select((state) => state.type),
+      effectiveProxiesStyleProvider.select((state) => state.type),
     );
     final isLoading = ref.watch(loadingProvider(LoadingTag.proxies));
     return CommonScaffold(

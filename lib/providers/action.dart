@@ -744,7 +744,7 @@ class ProxiesAction extends _$ProxiesAction {
       ref.read(groupsProvider.notifier).value = await retry(
         task: () async {
           final sortType = ref.read(
-            proxiesStyleSettingProvider.select((state) => state.sortType),
+            effectiveProxiesStyleProvider.select((state) => state.sortType),
           );
           final delayMap = ref.read(delayDataSourceProvider);
           final testUrl = ref.read(

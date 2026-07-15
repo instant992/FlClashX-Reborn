@@ -423,7 +423,7 @@ class _ListHeaderState extends State<ListHeader> {
     return Consumer(
       builder: (_, ref, child) {
         final iconStyle = ref.watch(
-          proxiesStyleSettingProvider.select((state) => state.iconStyle),
+          effectiveProxiesStyleProvider.select((state) => state.iconStyle),
         );
         return switch (iconStyle) {
           ProxiesIconStyle.standard => LayoutBuilder(

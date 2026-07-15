@@ -221,7 +221,7 @@ ProxiesActionsState proxiesActionsState(Ref ref) {
     providersProvider.select((state) => state.isNotEmpty),
   );
   final type = ref.watch(
-    proxiesStyleSettingProvider.select((state) => state.type),
+    effectiveProxiesStyleProvider.select((state) => state.type),
   );
   return ProxiesActionsState(
     pageLabel: pageLabel,
@@ -270,7 +270,7 @@ ProxiesListState proxiesListState(Ref ref) {
   final currentGroups = ref.watch(filterGroupsStateProvider(query));
   final currentUnfoldSet = ref.watch(unfoldSetProvider);
   final cardType = ref.watch(
-    proxiesStyleSettingProvider.select((state) => state.cardType),
+    effectiveProxiesStyleProvider.select((state) => state.cardType),
   );
 
   final columns = ref.watch(proxiesColumnsProvider);
@@ -290,7 +290,7 @@ ProxiesTabState proxiesTabState(Ref ref) {
     currentProfileProvider.select((state) => state?.currentGroupName),
   );
   final cardType = ref.watch(
-    proxiesStyleSettingProvider.select((state) => state.cardType),
+    effectiveProxiesStyleProvider.select((state) => state.cardType),
   );
   final columns = ref.watch(proxiesColumnsProvider);
   return ProxiesTabState(
@@ -324,7 +324,7 @@ ProxyGroupSelectorState proxyGroupSelectorState(
   String groupName,
   String query,
 ) {
-  final proxiesStyle = ref.watch(proxiesStyleSettingProvider);
+  final proxiesStyle = ref.watch(effectiveProxiesStyleProvider);
   final group = ref.watch(
     currentGroupsStateProvider.select(
       (state) => state.value.getGroup(groupName),
@@ -461,7 +461,7 @@ Profile? currentProfile(Ref ref) {
 int proxiesColumns(Ref ref) {
   final contentWidth = ref.watch(contentWidthProvider);
   final proxiesLayout = ref.watch(
-    proxiesStyleSettingProvider.select((state) => state.layout),
+    effectiveProxiesStyleProvider.select((state) => state.layout),
   );
   return utils.getProxiesColumns(contentWidth, proxiesLayout);
 }
@@ -584,7 +584,7 @@ VM3<bool, int, ProxiesSortType> needUpdateGroups(Ref ref) {
   );
   final sortNum = ref.watch(sortNumProvider);
   final sortType = ref.watch(
-    proxiesStyleSettingProvider.select((state) => state.sortType),
+    effectiveProxiesStyleProvider.select((state) => state.sortType),
   );
   return VM3(isProxies, sortNum, sortType);
 }
@@ -907,4 +907,65 @@ List<DashboardWidget> effectiveDashboardWidgets(Ref ref) {
   final parsed = DashboardWidget.parseLayout(layoutHeader);
   if (parsed.isEmpty) return savedWidgets;
   return parsed;
+}
+
+@riverpod
+ProxiesStyleProps effectiveProxiesStyle(Ref ref) {
+  final base = ref.watch(proxiesStyleSettingProvider);
+  final headers = ref.watch(providerHeadersProvider);
+  final viewHeader = headers['flclashx-view'];
+  if (viewHeader == null || viewHeader.isEmpty) return base;
+  var result = base;
+  for (final setting in viewHeader.split(';')) {
+    final parts = setting.split(':');
+    if (parts.length != 2) continue;
+    final key = parts[0].trim().toLowerCase();
+    final value = parts[1].trim().toLowerCase();
+    switch (key) {
+      case 'type':
+        switch (value) {
+          case 'list':
+            result = result.copyWith(type: ProxiesType.list);
+          case 'tab':
+            result = result.copyWith(type: ProxiesType.tab);
+        }
+      case 'sort':
+        switch (value) {
+          case 'none':
+            result = result.copyWith(sortType: ProxiesSortType.none);
+          case 'delay':
+            result = result.copyWith(sortType: ProxiesSortType.delay);
+          case 'name':
+            result = result.copyWith(sortType: ProxiesSortType.name);
+        }
+      case 'layout':
+        switch (value) {
+          case 'loose':
+            result = result.copyWith(layout: ProxiesLayout.loose);
+          case 'standard':
+            result = result.copyWith(layout: ProxiesLayout.standard);
+          case 'tight':
+            result = result.copyWith(layout: ProxiesLayout.tight);
+        }
+      case 'icon':
+        switch (value) {
+          case 'standard':
+            result = result.copyWith(iconStyle: ProxiesIconStyle.standard);
+          case 'icon':
+            result = result.copyWith(iconStyle: ProxiesIconStyle.icon);
+          case 'none':
+            result = result.copyWith(iconStyle: ProxiesIconStyle.none);
+        }
+      case 'card':
+        switch (value) {
+          case 'expand':
+            result = result.copyWith(cardType: ProxyCardType.expand);
+          case 'shrink':
+            result = result.copyWith(cardType: ProxyCardType.shrink);
+          case 'min':
+            result = result.copyWith(cardType: ProxyCardType.min);
+        }
+    }
+  }
+  return result;
 }
