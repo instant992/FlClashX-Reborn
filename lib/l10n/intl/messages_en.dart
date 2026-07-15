@@ -76,9 +76,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m23(count) => "${count} items have been selected";
 
-  static String m24(label) => "${label} must be a url";
+  static String m24(days) => "Your subscription expires in ${days} days";
 
-  static String m25(count) =>
+  static String m25(label) => "${label} must be a url";
+
+  static String m26(count) =>
       "${Intl.plural(count, one: '1 year ago', other: '${count} years ago')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -773,6 +775,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "remove": MessageLookupByLibrary.simpleMessage("Remove"),
     "rename": MessageLookupByLibrary.simpleMessage("Rename"),
+    "renew": MessageLookupByLibrary.simpleMessage("Renew"),
     "request": MessageLookupByLibrary.simpleMessage("Request"),
     "requests": MessageLookupByLibrary.simpleMessage("Requests"),
     "requestsDesc": MessageLookupByLibrary.simpleMessage(
@@ -957,6 +960,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selected": MessageLookupByLibrary.simpleMessage("Selected"),
     "selectedCountTitle": m23,
+    "sendDeviceHeaders": MessageLookupByLibrary.simpleMessage(
+      "Send device headers",
+    ),
+    "sendDeviceHeadersDesc": MessageLookupByLibrary.simpleMessage(
+      "Send HWID and device info to the subscription provider",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "show": MessageLookupByLibrary.simpleMessage("Show"),
     "shrink": MessageLookupByLibrary.simpleMessage("Shrink"),
@@ -999,6 +1008,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "submit": MessageLookupByLibrary.simpleMessage("Submit"),
     "subscriptionEternal": MessageLookupByLibrary.simpleMessage(
       "Subscription: perpetual",
+    ),
+    "subscriptionExpired": MessageLookupByLibrary.simpleMessage(
+      "Your subscription has expired",
+    ),
+    "subscriptionExpiresInDays": m24,
+    "subscriptionExpiresToday": MessageLookupByLibrary.simpleMessage(
+      "Your subscription expires today",
     ),
     "suspended": MessageLookupByLibrary.simpleMessage("Suspended..."),
     "sync": MessageLookupByLibrary.simpleMessage("Sync"),
@@ -1063,7 +1079,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "urlDesc": MessageLookupByLibrary.simpleMessage(
       "Obtain profile through URL",
     ),
-    "urlTip": m24,
+    "urlTip": m25,
     "useHosts": MessageLookupByLibrary.simpleMessage("Use hosts"),
     "useSystemHosts": MessageLookupByLibrary.simpleMessage("Use system hosts"),
     "userAgent": MessageLookupByLibrary.simpleMessage("User-Agent"),
@@ -1083,7 +1099,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "WebDAV configuration",
     ),
     "whitelistMode": MessageLookupByLibrary.simpleMessage("Whitelist mode"),
-    "yearsAgo": m25,
+    "yearsAgo": m26,
     "zh_CN": MessageLookupByLibrary.simpleMessage("Simplified Chinese"),
   };
 }

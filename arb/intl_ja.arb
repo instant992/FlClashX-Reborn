@@ -568,5 +568,11 @@
   "overrideProviderSettingsDesc": "サブスクリプションのアプリ設定を無視",
   "overrideNetworkSettings": "ネットワーク設定を上書き",
   "overrideNetworkSettingsDesc": "サブスクリプションではなく独自のネットワーク設定を使用",
-  "managedByProvider": "プロバイダ管理"
+  "managedByProvider": "プロバイダ管理",
+  "subscriptionExpired": "サブスクリプションの有効期限が切れました",
+  "subscriptionExpiresToday": "サブスクリプションが今日期限切れになります",
+  "subscriptionExpiresInDays": "サブスクリプションは{days}日後に期限切れになります",
+  "renew": "更新",
+  "sendDeviceHeaders": "デバイスヘッダーを送信",
+  "sendDeviceHeadersDesc": "HWIDとデバイス情報をサブスクリプションプロバイダに送信"
 }

@@ -568,5 +568,11 @@
   "overrideProviderSettingsDesc": "忽略订阅提供的应用设置",
   "overrideNetworkSettings": "覆盖网络设置",
   "overrideNetworkSettingsDesc": "使用您的网络设置而非订阅的设置",
-  "managedByProvider": "由提供商管理"
+  "managedByProvider": "由提供商管理",
+  "subscriptionExpired": "您的订阅已过期",
+  "subscriptionExpiresToday": "您的订阅今天到期",
+  "subscriptionExpiresInDays": "您的订阅将在 {days} 天后到期",
+  "renew": "续费",
+  "sendDeviceHeaders": "发送设备头信息",
+  "sendDeviceHeadersDesc": "向订阅提供商发送 HWID 和设备信息"
 }

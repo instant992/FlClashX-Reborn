@@ -4633,6 +4633,61 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Your subscription has expired`
+  String get subscriptionExpired {
+    return Intl.message(
+      'Your subscription has expired',
+      name: 'subscriptionExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your subscription expires today`
+  String get subscriptionExpiresToday {
+    return Intl.message(
+      'Your subscription expires today',
+      name: 'subscriptionExpiresToday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your subscription expires in {days} days`
+  String subscriptionExpiresInDays(Object days) {
+    return Intl.message(
+      'Your subscription expires in $days days',
+      name: 'subscriptionExpiresInDays',
+      desc: '',
+      args: [days],
+    );
+  }
+
+  /// `Renew`
+  String get renew {
+    return Intl.message('Renew', name: 'renew', desc: '', args: []);
+  }
+
+  /// `Send device headers`
+  String get sendDeviceHeaders {
+    return Intl.message(
+      'Send device headers',
+      name: 'sendDeviceHeaders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send HWID and device info to the subscription provider`
+  String get sendDeviceHeadersDesc {
+    return Intl.message(
+      'Send HWID and device info to the subscription provider',
+      name: 'sendDeviceHeadersDesc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

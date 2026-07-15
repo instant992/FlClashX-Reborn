@@ -75,9 +75,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m23(count) => "Выбрано ${count} элементов";
 
-  static String m24(label) => "${label} должен быть URL";
+  static String m24(days) => "Ваша подписка истекает через ${days} дн.";
 
-  static String m25(count) =>
+  static String m25(label) => "${label} должен быть URL";
+
+  static String m26(count) =>
       "${Intl.plural(count, one: '${count} год назад', few: '${count} года назад', many: '${count} лет назад', other: '${count} года назад')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -810,6 +812,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "remove": MessageLookupByLibrary.simpleMessage("Удалить"),
     "rename": MessageLookupByLibrary.simpleMessage("Переименовать"),
+    "renew": MessageLookupByLibrary.simpleMessage("Продлить"),
     "request": MessageLookupByLibrary.simpleMessage("Запрос"),
     "requests": MessageLookupByLibrary.simpleMessage("Запросы"),
     "requestsDesc": MessageLookupByLibrary.simpleMessage(
@@ -1004,6 +1007,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "selected": MessageLookupByLibrary.simpleMessage("Выбрано"),
     "selectedCountTitle": m23,
+    "sendDeviceHeaders": MessageLookupByLibrary.simpleMessage(
+      "Отправлять хедеры устройства",
+    ),
+    "sendDeviceHeadersDesc": MessageLookupByLibrary.simpleMessage(
+      "Отправлять HWID и инфо об устройстве провайдеру подписки",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
     "show": MessageLookupByLibrary.simpleMessage("Показать"),
     "shrink": MessageLookupByLibrary.simpleMessage("Сжать"),
@@ -1050,6 +1059,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "submit": MessageLookupByLibrary.simpleMessage("Отправить"),
     "subscriptionEternal": MessageLookupByLibrary.simpleMessage(
       "Подписка: бессрочная",
+    ),
+    "subscriptionExpired": MessageLookupByLibrary.simpleMessage(
+      "Ваша подписка истекла",
+    ),
+    "subscriptionExpiresInDays": m24,
+    "subscriptionExpiresToday": MessageLookupByLibrary.simpleMessage(
+      "Ваша подписка истекает сегодня",
     ),
     "suspended": MessageLookupByLibrary.simpleMessage("Приостановлено..."),
     "sync": MessageLookupByLibrary.simpleMessage("Синхронизация"),
@@ -1124,7 +1140,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "urlDesc": MessageLookupByLibrary.simpleMessage(
       "Получить профиль через URL",
     ),
-    "urlTip": m24,
+    "urlTip": m25,
     "useHosts": MessageLookupByLibrary.simpleMessage("Использовать hosts"),
     "useSystemHosts": MessageLookupByLibrary.simpleMessage(
       "Использовать системные hosts",
@@ -1148,7 +1164,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "whitelistMode": MessageLookupByLibrary.simpleMessage(
       "Режим белого списка",
     ),
-    "yearsAgo": m25,
+    "yearsAgo": m26,
     "zh_CN": MessageLookupByLibrary.simpleMessage("Упрощенный китайский"),
   };
 }

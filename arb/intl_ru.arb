@@ -568,5 +568,11 @@
   "overrideProviderSettingsDesc": "Игнорировать настройки приложения из подписки",
   "overrideNetworkSettings": "Переопределить сетевые настройки",
   "overrideNetworkSettingsDesc": "Использовать ваши сетевые настройки вместо настроек подписки",
-  "managedByProvider": "Управляется провайдером"
+  "managedByProvider": "Управляется провайдером",
+  "subscriptionExpired": "Ваша подписка истекла",
+  "subscriptionExpiresToday": "Ваша подписка истекает сегодня",
+  "subscriptionExpiresInDays": "Ваша подписка истекает через {days} дн.",
+  "renew": "Продлить",
+  "sendDeviceHeaders": "Отправлять хедеры устройства",
+  "sendDeviceHeadersDesc": "Отправлять HWID и инфо об устройстве провайдеру подписки"
 }

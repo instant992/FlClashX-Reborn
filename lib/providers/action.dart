@@ -9,6 +9,7 @@ import 'package:flclashx/models/models.dart';
 import 'package:flclashx/plugins/app.dart';
 import 'package:flclashx/plugins/service.dart';
 import 'package:flclashx/providers/providers.dart';
+import 'package:flclashx/services/subscription_notification_service.dart';
 import 'package:flclashx/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -923,6 +924,12 @@ class ProfilesAction extends _$ProfilesAction {
       ref.read(profilesProvider.notifier).put(profile);
       final newProfile = await profile.update();
       ref.read(profilesProvider.notifier).put(newProfile);
+      unawaited(
+        SubscriptionNotificationService.checkAndNotify(
+          newProfile,
+          currentAppLocalizations,
+        ),
+      );
       if (profile.id == ref.read(currentProfileIdProvider)) {
         ref
             .read(setupActionProvider.notifier)

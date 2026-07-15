@@ -4,7 +4,9 @@ import 'dart:typed_data';
 import 'package:flclashx/common/common.dart';
 import 'package:flclashx/core/controller.dart';
 import 'package:flclashx/enum/enum.dart';
+import 'package:flclashx/utils/device_info_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'clash_config.dart';
 
@@ -199,7 +201,25 @@ extension ProfileExtension on Profile {
   }
 
   Future<Profile> update() async {
-    final response = await request.getFileResponseForUrl(url);
+    final prefs = await SharedPreferences.getInstance();
+    final sendDeviceHeaders = prefs.getBool('sendDeviceHeaders') ?? true;
+    final headers = <String, dynamic>{};
+    if (sendDeviceHeaders) {
+      try {
+        final deviceInfoService = DeviceInfoService();
+        final details = await deviceInfoService.getDeviceDetails();
+        if (details.hwid != null) headers['x-hwid'] = details.hwid;
+        if (details.os != null) headers['x-device-os'] = details.os;
+        if (details.osVersion != null) {
+          headers['x-ver-os'] = details.osVersion;
+        }
+        if (details.model != null) headers['x-device-model'] = details.model;
+      } catch (_) {}
+    }
+    final response = await request.getFileResponseForUrl(
+      url,
+      headers: headers.isNotEmpty ? headers : null,
+    );
     final disposition = response.headers.value('content-disposition');
     final userinfo = response.headers.value('subscription-userinfo');
 

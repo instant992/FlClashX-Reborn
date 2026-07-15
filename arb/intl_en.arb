@@ -568,5 +568,11 @@
   "overrideProviderSettingsDesc": "Ignore subscription-provided app settings",
   "overrideNetworkSettings": "Override network settings",
   "overrideNetworkSettingsDesc": "Use your network settings instead of the subscription's",
-  "managedByProvider": "Managed by provider"
+  "managedByProvider": "Managed by provider",
+  "subscriptionExpired": "Your subscription has expired",
+  "subscriptionExpiresToday": "Your subscription expires today",
+  "subscriptionExpiresInDays": "Your subscription expires in {days} days",
+  "renew": "Renew",
+  "sendDeviceHeaders": "Send device headers",
+  "sendDeviceHeadersDesc": "Send HWID and device info to the subscription provider"
 }
