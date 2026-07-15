@@ -28,37 +28,37 @@ on Mobile:
 
 ## Added Functionality
 
-ЁЯЫая╕П Fixed default settings: process search mode on, TUN mode on, system proxy mode off, proxy list display mode set to 'list', changed camera behavior when adding a subscription via QR.
+🛠️ Fixed default settings: process search mode on, TUN mode on, system proxy mode off, proxy list display mode set to 'list', changed camera behavior when adding a subscription via QR.
 
-ЁЯУ▒ **Android 120Hz Display Support:** Added support for high refresh rate displays (120Hz) on Android devices for smoother animations and scrolling.
+📱 **Android 120Hz Display Support:** Added support for high refresh rate displays (120Hz) on Android devices for smoother animations and scrolling.
 
-ЁЯЧСя╕П **Clear Application Data:** Added "Clear Data" button in Application Settings that removes all profiles from the profiles folder. Useful for troubleshooting or resetting the application.
+🗑️ **Clear Application Data:** Added "Clear Data" button in Application Settings that removes all profiles from the profiles folder. Useful for troubleshooting or resetting the application.
 
-ЁЯЗ╖ЁЯЗ║ Added Russian language to the installer and redesigned the localization in the application.
+🇷🇺 Added Russian language to the installer and redesigned the localization in the application.
 
-тЬИя╕П Transmit HWID to the panel (Works only with <a href="https://github.com/remnawave/panel">Remnawave</a>).
+✈️ Transmit HWID to the panel (Works only with <a href="https://github.com/remnawave/panel">Remnawave</a>).
 
-ЁЯТ╗ Added a new "Announcements" widget. It transmits announcements from the panel to the widget. (Works only with <a href="https://github.com/remnawave/panel">Remnawave</a>).
+💻 Added a new "Announcements" widget. It transmits announcements from the panel to the widget. (Works only with <a href="https://github.com/remnawave/panel">Remnawave</a>).
 
-ЁЯУ║ Optimized controls for Android TV:
+📺 Optimized controls for Android TV:
 
 - Added a "Paste" button to the menu for adding a subscription via a link.
 - Added a profile selection button.
 - Added the ability to transfer a profile from the mobile app via a QR code.
 
-ЁЯкк Redesigned the profile card:
+🪪 Redesigned the profile card:
 
 - Uses a traffic volume indicator with color change (not displayed if traffic is unlimited).
 - Displays subscription expiration date (if the year is 2099, it displays "Your subscription is permanent").
 - Added a new "Support" button in the profile, which pulls the supportUrl from the panel.
 - The autoupdateinterval parameter for the profile is now correctly transmitted from the panel.
 
-ЁЯкк
+🪪
 - Added "Meta-Info" widget. Transmits subscription parameters to the widget: remaining traffic, subscription expiration date, profile name, and prominently displays days remaining until subscription expires (3 days before expiration).
 - Added "serviceInfo" widget. Displays your service name. You can additionally pass the `flclashx-servicelogo` header for a custom logo (supports svg/png links), and clicking opens the support link (supportURL).
 - Added "changeServerButton" widget. Clicking redirects to the proxy page.
 
-ЁЯМР Added parsing of custom headers from the subscription page:
+🌐 Added parsing of custom headers from the subscription page:
 
 - flclashx-widgets: arranges widgets in the order received from the subscription.
 
@@ -171,11 +171,11 @@ Usage:
 
 |   Parameter   | Description                                      | Default      |
 | :-----------: | ------------------------------------------------ | :----------: |
-|  `minimize`   | Minimize application on exit instead of closing  | тЭМ Disabled  |
-|   `autorun`   | Launch application on system startup             | тЭМ Disabled  |
-| `shadowstart` | Launch application minimized to tray             | тЭМ Disabled  |
-|  `autostart`  | Automatically start proxy on application launch  | тЭМ Disabled  |
-| `autoupdate`  | Automatically check for application updates      | тЭМ Disabled  |
+|  `minimize`   | Minimize application on exit instead of closing  | ❌ Disabled  |
+|   `autorun`   | Launch application on system startup             | ❌ Disabled  |
+| `shadowstart` | Launch application minimized to tray             | ❌ Disabled  |
+|  `autostart`  | Automatically start proxy on application launch  | ❌ Disabled  |
+| `autoupdate`  | Automatically check for application updates      | ❌ Disabled  |
 
 **Client-side override:** Users can enable "Override provider settings" in Application Settings to apply their local configuration instead of subscription settings.
 
@@ -201,7 +201,7 @@ By default, the following configuration parameters received from the subscriptio
 
 ### Linux
 
-тЪая╕П Before use, ensure the following dependencies are installed:
+⚠️ Before use, ensure the following dependencies are installed:
 
 ```bash
  sudo apt-get install libayatana-appindicator3-dev
@@ -227,7 +227,7 @@ The following actions are supported:
 ## Star
 
 <p style="text-align: center;">
-The easiest way to support the developers is to click the star (тнР) at the top of the page.<br>
+The easiest way to support the developers is to click the star (⭐) at the top of the page.<br>
 If you want to support with a small donation, you can <a href="https://t.me/tribute/app?startapp=dtyh">do so here.</a>
 </p>
 
