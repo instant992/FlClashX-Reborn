@@ -578,5 +578,14 @@
   "support": "サポート",
   "hwidNotSupported": "サブスクリプションプロバイダはデバイス識別(HWID)を要求していますが、クライアントが送信しませんでした。設定で「デバイスヘッダーを送信」を有効にしてサブスクリプションを更新してください。",
   "hwidMaxDevicesReached": "このサブスクリプションの最大デバイス数に達しました。",
-  "settings": "設定"
+  "settings": "設定",
+  "forkedBy": "FlClashXをフォーク",
+  "supportProject": "プロジェクトを支援",
+  "supportProjectDesc": "開発者を支援する",
+  "supportProjectTip": "アプリを気に入っていただけたら、寄付で開発者を支援できます。",
+  "cardNumber": "カード番号",
+  "cardholderName": "カード名義人",
+  "expiryDate": "有効期限",
+  "cvv": "CVV",
+  "copied": "コピーしました"
 }

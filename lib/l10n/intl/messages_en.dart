@@ -219,6 +219,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelSelectAll": MessageLookupByLibrary.simpleMessage(
       "Cancel select all",
     ),
+    "cardNumber": MessageLookupByLibrary.simpleMessage("Card number"),
+    "cardholderName": MessageLookupByLibrary.simpleMessage("Cardholder"),
     "changeServer": MessageLookupByLibrary.simpleMessage("Change Server"),
     "checkUpdate": MessageLookupByLibrary.simpleMessage("Check for updates"),
     "checkUpdateError": MessageLookupByLibrary.simpleMessage(
@@ -266,6 +268,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "controlGlobalAddedRules": MessageLookupByLibrary.simpleMessage(
       "Control global added rules",
     ),
+    "copied": MessageLookupByLibrary.simpleMessage("Copied"),
     "copy": MessageLookupByLibrary.simpleMessage("Copy"),
     "copyEnvVar": MessageLookupByLibrary.simpleMessage(
       "Copying environment variables",
@@ -285,6 +288,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "creationTime": MessageLookupByLibrary.simpleMessage("Creation time"),
     "custom": MessageLookupByLibrary.simpleMessage("Custom"),
     "cut": MessageLookupByLibrary.simpleMessage("Cut"),
+    "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
     "dark": MessageLookupByLibrary.simpleMessage("Dark"),
     "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
     "dataChangedSave": MessageLookupByLibrary.simpleMessage(
@@ -379,6 +383,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "expand": MessageLookupByLibrary.simpleMessage("Standard"),
     "expectedStatus": MessageLookupByLibrary.simpleMessage("Expected status"),
     "expiresOn": MessageLookupByLibrary.simpleMessage("Expires on"),
+    "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry date"),
     "exportFile": MessageLookupByLibrary.simpleMessage("Export file"),
     "exportLogs": MessageLookupByLibrary.simpleMessage("Export logs"),
     "exportSuccess": MessageLookupByLibrary.simpleMessage("Export Success"),
@@ -412,6 +417,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "forceRestartCoreTip": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to force restart the core?",
     ),
+    "forkedBy": MessageLookupByLibrary.simpleMessage("Forked FlClashX"),
     "fruitSaladScheme": MessageLookupByLibrary.simpleMessage("FruitSalad"),
     "general": MessageLookupByLibrary.simpleMessage("General"),
     "geoAutoUpdate": MessageLookupByLibrary.simpleMessage("Auto Update"),
@@ -1023,6 +1029,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Your subscription expires today",
     ),
     "support": MessageLookupByLibrary.simpleMessage("Support"),
+    "supportProject": MessageLookupByLibrary.simpleMessage(
+      "Support the project",
+    ),
+    "supportProjectDesc": MessageLookupByLibrary.simpleMessage(
+      "Support the developer",
+    ),
+    "supportProjectTip": MessageLookupByLibrary.simpleMessage(
+      "If you like the app, you can support the developer with a donation.",
+    ),
     "suspended": MessageLookupByLibrary.simpleMessage("Suspended..."),
     "sync": MessageLookupByLibrary.simpleMessage("Sync"),
     "system": MessageLookupByLibrary.simpleMessage("System"),

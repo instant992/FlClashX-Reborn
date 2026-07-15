@@ -167,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("キャンセル"),
     "cancelSelectAll": MessageLookupByLibrary.simpleMessage("全選択解除"),
+    "cardNumber": MessageLookupByLibrary.simpleMessage("カード番号"),
+    "cardholderName": MessageLookupByLibrary.simpleMessage("カード名義人"),
     "changeServer": MessageLookupByLibrary.simpleMessage("サーバー変更"),
     "checkUpdate": MessageLookupByLibrary.simpleMessage("更新を確認"),
     "checkUpdateError": MessageLookupByLibrary.simpleMessage("アプリは最新版です"),
@@ -208,6 +210,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "controlGlobalAddedRules": MessageLookupByLibrary.simpleMessage(
       "グローバル追加ルールを制御",
     ),
+    "copied": MessageLookupByLibrary.simpleMessage("コピーしました"),
     "copy": MessageLookupByLibrary.simpleMessage("コピー"),
     "copyEnvVar": MessageLookupByLibrary.simpleMessage("環境変数をコピー"),
     "copyLink": MessageLookupByLibrary.simpleMessage("リンクをコピー"),
@@ -225,6 +228,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "creationTime": MessageLookupByLibrary.simpleMessage("作成時間"),
     "custom": MessageLookupByLibrary.simpleMessage("カスタム"),
     "cut": MessageLookupByLibrary.simpleMessage("切り取り"),
+    "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
     "dark": MessageLookupByLibrary.simpleMessage("ダーク"),
     "dashboard": MessageLookupByLibrary.simpleMessage("ダッシュボード"),
     "dataChangedSave": MessageLookupByLibrary.simpleMessage(
@@ -299,6 +303,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "expand": MessageLookupByLibrary.simpleMessage("標準"),
     "expectedStatus": MessageLookupByLibrary.simpleMessage("期待されるステータス"),
     "expiresOn": MessageLookupByLibrary.simpleMessage("有効期限"),
+    "expiryDate": MessageLookupByLibrary.simpleMessage("有効期限"),
     "exportFile": MessageLookupByLibrary.simpleMessage("ファイルをエクスポート"),
     "exportLogs": MessageLookupByLibrary.simpleMessage("ログをエクスポート"),
     "exportSuccess": MessageLookupByLibrary.simpleMessage("エクスポート成功"),
@@ -328,6 +333,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "forceRestartCoreTip": MessageLookupByLibrary.simpleMessage(
       "コアを強制再起動してもよろしいですか？",
     ),
+    "forkedBy": MessageLookupByLibrary.simpleMessage("FlClashXをフォーク"),
     "fruitSaladScheme": MessageLookupByLibrary.simpleMessage("フルーツサラダ"),
     "general": MessageLookupByLibrary.simpleMessage("一般"),
     "geoAutoUpdate": MessageLookupByLibrary.simpleMessage("自動更新"),
@@ -835,6 +841,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "サブスクリプションが今日期限切れになります",
     ),
     "support": MessageLookupByLibrary.simpleMessage("サポート"),
+    "supportProject": MessageLookupByLibrary.simpleMessage("プロジェクトを支援"),
+    "supportProjectDesc": MessageLookupByLibrary.simpleMessage("開発者を支援する"),
+    "supportProjectTip": MessageLookupByLibrary.simpleMessage(
+      "アプリを気に入っていただけたら、寄付で開発者を支援できます。",
+    ),
     "suspended": MessageLookupByLibrary.simpleMessage("一時停止中..."),
     "sync": MessageLookupByLibrary.simpleMessage("同期"),
     "system": MessageLookupByLibrary.simpleMessage("システム"),

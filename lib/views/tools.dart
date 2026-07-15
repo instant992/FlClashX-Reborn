@@ -11,6 +11,7 @@ import 'package:flclashx/views/application_setting.dart';
 import 'package:flclashx/views/backup_and_restore.dart';
 import 'package:flclashx/views/config/config.dart';
 import 'package:flclashx/views/hotkey.dart';
+import 'package:flclashx/views/support_project.dart';
 import 'package:flclashx/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -63,6 +64,7 @@ class _ToolViewState extends ConsumerState<ToolsView> {
       items: [
         const _DisclaimerItem(),
         if (enableDeveloperMode) const _DeveloperItem(),
+        const _SupportProjectItem(),
         const _InfoItem(),
       ],
     );
@@ -300,6 +302,20 @@ class _InfoItem extends StatelessWidget {
       leading: const Icon(Icons.info),
       title: Text(context.appLocalizations.about),
       delegate: const OpenDelegate(widget: AboutView()),
+    );
+  }
+}
+
+class _SupportProjectItem extends StatelessWidget {
+  const _SupportProjectItem();
+
+  @override
+  Widget build(BuildContext context) {
+    return ListItem.open(
+      leading: const Icon(Icons.favorite),
+      title: Text(context.appLocalizations.supportProject),
+      subtitle: Text(context.appLocalizations.supportProjectDesc),
+      delegate: const OpenDelegate(widget: SupportProjectView()),
     );
   }
 }

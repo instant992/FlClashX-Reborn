@@ -222,6 +222,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelSelectAll": MessageLookupByLibrary.simpleMessage(
       "Отменить выбор всего",
     ),
+    "cardNumber": MessageLookupByLibrary.simpleMessage("Номер карты"),
+    "cardholderName": MessageLookupByLibrary.simpleMessage("Владелец карты"),
     "changeServer": MessageLookupByLibrary.simpleMessage("Сменить сервер"),
     "checkUpdate": MessageLookupByLibrary.simpleMessage("Проверить обновления"),
     "checkUpdateError": MessageLookupByLibrary.simpleMessage(
@@ -273,6 +275,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "controlGlobalAddedRules": MessageLookupByLibrary.simpleMessage(
       "Управление глобальными добавленными правилами",
     ),
+    "copied": MessageLookupByLibrary.simpleMessage("Скопировано"),
     "copy": MessageLookupByLibrary.simpleMessage("Копировать"),
     "copyEnvVar": MessageLookupByLibrary.simpleMessage(
       "Копирование переменных окружения",
@@ -292,6 +295,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "creationTime": MessageLookupByLibrary.simpleMessage("Время создания"),
     "custom": MessageLookupByLibrary.simpleMessage("Пользовательский"),
     "cut": MessageLookupByLibrary.simpleMessage("Вырезать"),
+    "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
     "dark": MessageLookupByLibrary.simpleMessage("Темный"),
     "dashboard": MessageLookupByLibrary.simpleMessage("Панель управления"),
     "dataChangedSave": MessageLookupByLibrary.simpleMessage(
@@ -390,6 +394,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "expand": MessageLookupByLibrary.simpleMessage("Стандартный"),
     "expectedStatus": MessageLookupByLibrary.simpleMessage("Ожидаемый статус"),
     "expiresOn": MessageLookupByLibrary.simpleMessage("Истекает"),
+    "expiryDate": MessageLookupByLibrary.simpleMessage("Срок действия"),
     "exportFile": MessageLookupByLibrary.simpleMessage("Экспорт файла"),
     "exportLogs": MessageLookupByLibrary.simpleMessage("Экспорт логов"),
     "exportSuccess": MessageLookupByLibrary.simpleMessage("Экспорт успешен"),
@@ -427,6 +432,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "forceRestartCoreTip": MessageLookupByLibrary.simpleMessage(
       "Вы уверены, что хотите принудительно перезапустить ядро?",
     ),
+    "forkedBy": MessageLookupByLibrary.simpleMessage("Форкнул FlClashX"),
     "fruitSaladScheme": MessageLookupByLibrary.simpleMessage("Фруктовый микс"),
     "general": MessageLookupByLibrary.simpleMessage("Общие"),
     "geoAutoUpdate": MessageLookupByLibrary.simpleMessage("Автообновление"),
@@ -1074,6 +1080,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Ваша подписка истекает сегодня",
     ),
     "support": MessageLookupByLibrary.simpleMessage("Поддержка"),
+    "supportProject": MessageLookupByLibrary.simpleMessage("Поддержка проекта"),
+    "supportProjectDesc": MessageLookupByLibrary.simpleMessage(
+      "Поддержать разработчика",
+    ),
+    "supportProjectTip": MessageLookupByLibrary.simpleMessage(
+      "Если вам нравится приложение, вы можете поддержать разработчика донатом.",
+    ),
     "suspended": MessageLookupByLibrary.simpleMessage("Приостановлено..."),
     "sync": MessageLookupByLibrary.simpleMessage("Синхронизация"),
     "system": MessageLookupByLibrary.simpleMessage("Система"),

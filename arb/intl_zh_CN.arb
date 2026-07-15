@@ -578,5 +578,14 @@
   "support": "支持",
   "hwidNotSupported": "订阅提供商要求设备标识(HWID)，但客户端未发送。请在设置中启用“发送设备头信息”并更新订阅。",
   "hwidMaxDevicesReached": "您已达到此订阅的最大设备数量。",
-  "settings": "设置"
+  "settings": "设置",
+  "forkedBy": "Fork了 FlClashX",
+  "supportProject": "支持项目",
+  "supportProjectDesc": "支持开发者",
+  "supportProjectTip": "如果您喜欢这个应用，可以通过捐赠支持开发者。",
+  "cardNumber": "卡号",
+  "cardholderName": "持卡人",
+  "expiryDate": "有效期",
+  "cvv": "CVV",
+  "copied": "已复制"
 }

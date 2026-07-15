@@ -74,6 +74,26 @@ class AboutView extends StatelessWidget {
     );
   }
 
+  List<Widget> _buildForkedBySection(AppLocalizations appLocalizations) {
+    const contributor = Contributor(
+      avatar: 'https://github.com/instant992.png',
+      name: 'instant992',
+      link: 'https://github.com/instant992',
+    );
+    return generateSection(
+      separated: false,
+      title: appLocalizations.forkedBy,
+      items: [
+        const ListItem(
+          title: Wrap(
+            spacing: 24,
+            children: [Avatar(contributor: contributor)],
+          ),
+        ),
+      ],
+    );
+  }
+
   List<Widget> _buildContributorsSection(AppLocalizations appLocalizations) {
     const contributors = [
       Contributor(
@@ -134,7 +154,7 @@ class AboutView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            appName,
+                            'FlClashX Reborn',
                             style: Theme.of(context).textTheme.headlineSmall,
                           ),
                           Text(
@@ -165,6 +185,7 @@ class AboutView extends StatelessWidget {
         ),
       ),
       const SizedBox(height: 12),
+      ..._buildForkedBySection(appLocalizations),
       ..._buildContributorsSection(appLocalizations),
       ..._buildMoreSection(context),
     ];
@@ -185,23 +206,25 @@ class Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isNetwork = contributor.avatar.startsWith('http');
+    final imageProvider = isNetwork
+        ? NetworkImage(contributor.avatar)
+        : AssetImage(contributor.avatar) as ImageProvider;
     return GestureDetector(
+      onTap: () {
+        globalState.openUrl(contributor.link);
+      },
       child: Column(
         children: [
           SizedBox(
             width: 36,
             height: 36,
-            child: CircleAvatar(
-              foregroundImage: AssetImage(contributor.avatar),
-            ),
+            child: CircleAvatar(foregroundImage: imageProvider),
           ),
           const SizedBox(height: 4),
           Text(contributor.name, style: context.textTheme.bodySmall),
         ],
       ),
-      // onTap: () {
-      //   globalState.openUrl(contributor.link);
-      // },
     );
   }
 }

@@ -4713,6 +4713,76 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Forked FlClashX`
+  String get forkedBy {
+    return Intl.message(
+      'Forked FlClashX',
+      name: 'forkedBy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support the project`
+  String get supportProject {
+    return Intl.message(
+      'Support the project',
+      name: 'supportProject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support the developer`
+  String get supportProjectDesc {
+    return Intl.message(
+      'Support the developer',
+      name: 'supportProjectDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you like the app, you can support the developer with a donation.`
+  String get supportProjectTip {
+    return Intl.message(
+      'If you like the app, you can support the developer with a donation.',
+      name: 'supportProjectTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Card number`
+  String get cardNumber {
+    return Intl.message('Card number', name: 'cardNumber', desc: '', args: []);
+  }
+
+  /// `Cardholder`
+  String get cardholderName {
+    return Intl.message(
+      'Cardholder',
+      name: 'cardholderName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expiry date`
+  String get expiryDate {
+    return Intl.message('Expiry date', name: 'expiryDate', desc: '', args: []);
+  }
+
+  /// `CVV`
+  String get cvv {
+    return Intl.message('CVV', name: 'cvv', desc: '', args: []);
+  }
+
+  /// `Copied`
+  String get copied {
+    return Intl.message('Copied', name: 'copied', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

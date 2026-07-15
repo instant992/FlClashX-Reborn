@@ -578,5 +578,14 @@
   "support": "Support",
   "hwidNotSupported": "The subscription provider requires device identification (HWID), but your client did not send it. Enable \"Send device headers\" in settings and update the subscription.",
   "hwidMaxDevicesReached": "You have reached the maximum number of devices for this subscription.",
-  "settings": "Settings"
+  "settings": "Settings",
+  "forkedBy": "Forked FlClashX",
+  "supportProject": "Support the project",
+  "supportProjectDesc": "Support the developer",
+  "supportProjectTip": "If you like the app, you can support the developer with a donation.",
+  "cardNumber": "Card number",
+  "cardholderName": "Cardholder",
+  "expiryDate": "Expiry date",
+  "cvv": "CVV",
+  "copied": "Copied"
 }
