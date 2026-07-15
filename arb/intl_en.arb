@@ -550,5 +550,18 @@
   "geoSkipped": "{name} skipped",
   "geoUpdated": "{name} updated",
   "secondsCount": "{count} seconds",
-  "entriesCount": "{count} entries"
+  "entriesCount": "{count} entries",
+  "changeServer": "Change Server",
+  "traffic": "Traffic",
+  "trafficUnlimited": "Traffic: unlimited",
+  "subscriptionEternal": "Subscription: perpetual",
+  "expiresOn": "Expires on",
+  "day": "day",
+  "days": "days",
+  "daysGenitive": "days",
+  "hour": "hour",
+  "hoursPlural": "hours",
+  "hoursGenitive": "hours",
+  "remainingSingular": "remaining",
+  "remainingPlural": "remaining"
 }

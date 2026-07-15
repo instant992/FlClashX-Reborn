@@ -550,5 +550,18 @@
   "geoSkipped": "{name} 已跳过",
   "geoUpdated": "{name} 已更新",
   "secondsCount": "{count} 秒",
-  "entriesCount": "{count} 个条目"
+  "entriesCount": "{count} 个条目",
+  "changeServer": "切换服务器",
+  "traffic": "流量",
+  "trafficUnlimited": "流量：不限",
+  "subscriptionEternal": "订阅：永久",
+  "expiresOn": "到期日",
+  "day": "天",
+  "days": "天",
+  "daysGenitive": "天",
+  "hour": "小时",
+  "hoursPlural": "小时",
+  "hoursGenitive": "小时",
+  "remainingSingular": "剩余",
+  "remainingPlural": "剩余"
 }

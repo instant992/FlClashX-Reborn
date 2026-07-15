@@ -4493,6 +4493,96 @@ class AppLocalizations {
       args: [count],
     );
   }
+
+  /// `Change Server`
+  String get changeServer {
+    return Intl.message(
+      'Change Server',
+      name: 'changeServer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Traffic`
+  String get traffic {
+    return Intl.message('Traffic', name: 'traffic', desc: '', args: []);
+  }
+
+  /// `Traffic: unlimited`
+  String get trafficUnlimited {
+    return Intl.message(
+      'Traffic: unlimited',
+      name: 'trafficUnlimited',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscription: perpetual`
+  String get subscriptionEternal {
+    return Intl.message(
+      'Subscription: perpetual',
+      name: 'subscriptionEternal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expires on`
+  String get expiresOn {
+    return Intl.message('Expires on', name: 'expiresOn', desc: '', args: []);
+  }
+
+  /// `day`
+  String get day {
+    return Intl.message('day', name: 'day', desc: '', args: []);
+  }
+
+  /// `days`
+  String get days {
+    return Intl.message('days', name: 'days', desc: '', args: []);
+  }
+
+  /// `days`
+  String get daysGenitive {
+    return Intl.message('days', name: 'daysGenitive', desc: '', args: []);
+  }
+
+  /// `hour`
+  String get hour {
+    return Intl.message('hour', name: 'hour', desc: '', args: []);
+  }
+
+  /// `hours`
+  String get hoursPlural {
+    return Intl.message('hours', name: 'hoursPlural', desc: '', args: []);
+  }
+
+  /// `hours`
+  String get hoursGenitive {
+    return Intl.message('hours', name: 'hoursGenitive', desc: '', args: []);
+  }
+
+  /// `remaining`
+  String get remainingSingular {
+    return Intl.message(
+      'remaining',
+      name: 'remainingSingular',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `remaining`
+  String get remainingPlural {
+    return Intl.message(
+      'remaining',
+      name: 'remainingPlural',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -550,5 +550,18 @@
   "geoSkipped": "{name} スキップ済み",
   "geoUpdated": "{name} 更新済み",
   "secondsCount": "{count} 秒",
-  "entriesCount": "{count} エントリ"
+  "entriesCount": "{count} エントリ",
+  "changeServer": "サーバー変更",
+  "traffic": "トラフィック",
+  "trafficUnlimited": "トラフィック: 無制限",
+  "subscriptionEternal": "サブスクリプション: 無期限",
+  "expiresOn": "有効期限",
+  "day": "日",
+  "days": "日",
+  "daysGenitive": "日",
+  "hour": "時間",
+  "hoursPlural": "時間",
+  "hoursGenitive": "時間",
+  "remainingSingular": "残り",
+  "remainingPlural": "残り"
 }

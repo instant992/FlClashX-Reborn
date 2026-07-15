@@ -550,5 +550,18 @@
   "geoSkipped": "{name} пропущено",
   "geoUpdated": "{name} обновлено",
   "secondsCount": "{count} секунд",
-  "entriesCount": "{count} записей"
+  "entriesCount": "{count} записей",
+  "changeServer": "Сменить сервер",
+  "traffic": "Трафик",
+  "trafficUnlimited": "Трафик: безлимит",
+  "subscriptionEternal": "Подписка: бессрочная",
+  "expiresOn": "Истекает",
+  "day": "день",
+  "days": "дней",
+  "daysGenitive": "дня",
+  "hour": "час",
+  "hoursPlural": "часов",
+  "hoursGenitive": "часов",
+  "remainingSingular": "остался",
+  "remainingPlural": "осталось"
 }

@@ -299,6 +299,8 @@ enum DashboardWidget {
   outboundModeV2(GridItem(crossAxisCellCount: 8, child: OutboundModeV2())),
   outboundMode(GridItem(crossAxisCellCount: 4, child: OutboundMode())),
   trafficUsage(GridItem(crossAxisCellCount: 4, child: TrafficUsage())),
+  announce(GridItem(crossAxisCellCount: 8, child: AnnounceWidget())),
+  metainfo(GridItem(crossAxisCellCount: 8, child: MetainfoWidget())),
   networkDetection(GridItem(crossAxisCellCount: 4, child: NetworkDetection())),
   tunButton(
     GridItem(crossAxisCellCount: 4, child: TUNButton()),
@@ -313,7 +315,13 @@ enum DashboardWidget {
     platforms: desktopPlatforms,
   ),
   intranetIp(GridItem(crossAxisCellCount: 4, child: IntranetIP())),
-  memoryInfo(GridItem(crossAxisCellCount: 4, child: MemoryInfo()));
+  memoryInfo(GridItem(crossAxisCellCount: 4, child: MemoryInfo())),
+  changeServerButton(
+    GridItem(crossAxisCellCount: 8, child: ChangeServerButton()),
+  ),
+  serviceInfo(
+    GridItem(crossAxisCellCount: 8, child: ServiceInfoWidget()),
+  );
 
   final GridItem widget;
   final List<SupportPlatform> platforms;
