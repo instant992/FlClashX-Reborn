@@ -4693,6 +4693,26 @@ class AppLocalizations {
   String get support {
     return Intl.message('Support', name: 'support', desc: '', args: []);
   }
+
+  /// `The subscription provider requires device identification (HWID), but your client did not send it. Enable "Send device headers" in settings and update the subscription.`
+  String get hwidNotSupported {
+    return Intl.message(
+      'The subscription provider requires device identification (HWID), but your client did not send it. Enable "Send device headers" in settings and update the subscription.',
+      name: 'hwidNotSupported',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have reached the maximum number of devices for this subscription.`
+  String get hwidMaxDevicesReached {
+    return Intl.message(
+      'You have reached the maximum number of devices for this subscription.',
+      name: 'hwidMaxDevicesReached',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

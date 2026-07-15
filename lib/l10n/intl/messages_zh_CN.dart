@@ -324,6 +324,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "hoursCount": m11,
     "hoursGenitive": MessageLookupByLibrary.simpleMessage("小时"),
     "hoursPlural": MessageLookupByLibrary.simpleMessage("小时"),
+    "hwidMaxDevicesReached": MessageLookupByLibrary.simpleMessage(
+      "您已达到此订阅的最大设备数量。",
+    ),
+    "hwidNotSupported": MessageLookupByLibrary.simpleMessage(
+      "订阅提供商要求设备标识(HWID)，但客户端未发送。请在设置中启用“发送设备头信息”并更新订阅。",
+    ),
     "icon": MessageLookupByLibrary.simpleMessage("图片"),
     "iconRecords": MessageLookupByLibrary.simpleMessage("图标记录"),
     "iconStyle": MessageLookupByLibrary.simpleMessage("图标样式"),

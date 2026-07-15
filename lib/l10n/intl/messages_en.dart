@@ -458,6 +458,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "hoursCount": m11,
     "hoursGenitive": MessageLookupByLibrary.simpleMessage("hours"),
     "hoursPlural": MessageLookupByLibrary.simpleMessage("hours"),
+    "hwidMaxDevicesReached": MessageLookupByLibrary.simpleMessage(
+      "You have reached the maximum number of devices for this subscription.",
+    ),
+    "hwidNotSupported": MessageLookupByLibrary.simpleMessage(
+      "The subscription provider requires device identification (HWID), but your client did not send it. Enable \"Send device headers\" in settings and update the subscription.",
+    ),
     "icon": MessageLookupByLibrary.simpleMessage("Icon"),
     "iconRecords": MessageLookupByLibrary.simpleMessage("Icon records"),
     "iconStyle": MessageLookupByLibrary.simpleMessage("Icon style"),

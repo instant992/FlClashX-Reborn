@@ -364,6 +364,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "hoursCount": m11,
     "hoursGenitive": MessageLookupByLibrary.simpleMessage("時間"),
     "hoursPlural": MessageLookupByLibrary.simpleMessage("時間"),
+    "hwidMaxDevicesReached": MessageLookupByLibrary.simpleMessage(
+      "このサブスクリプションの最大デバイス数に達しました。",
+    ),
+    "hwidNotSupported": MessageLookupByLibrary.simpleMessage(
+      "サブスクリプションプロバイダはデバイス識別(HWID)を要求していますが、クライアントが送信しませんでした。設定で「デバイスヘッダーを送信」を有効にしてサブスクリプションを更新してください。",
+    ),
     "icon": MessageLookupByLibrary.simpleMessage("アイコン"),
     "iconRecords": MessageLookupByLibrary.simpleMessage("アイコン履歴"),
     "iconStyle": MessageLookupByLibrary.simpleMessage("アイコンスタイル"),

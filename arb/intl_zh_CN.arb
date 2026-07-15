@@ -575,5 +575,8 @@
   "renew": "续费",
   "sendDeviceHeaders": "发送设备头信息",
   "sendDeviceHeadersDesc": "向订阅提供商发送 HWID 和设备信息",
-  "support": "支持"
+  "support": "支持",
+  "hwidNotSupported": "订阅提供商要求设备标识(HWID)，但客户端未发送。请在设置中启用“发送设备头信息”并更新订阅。",
+  "hwidMaxDevicesReached": "您已达到此订阅的最大设备数量。",
+  "settings": "设置"
 }

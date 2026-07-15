@@ -575,5 +575,8 @@
   "renew": "Renew",
   "sendDeviceHeaders": "Send device headers",
   "sendDeviceHeadersDesc": "Send HWID and device info to the subscription provider",
-  "support": "Support"
+  "support": "Support",
+  "hwidNotSupported": "The subscription provider requires device identification (HWID), but your client did not send it. Enable \"Send device headers\" in settings and update the subscription.",
+  "hwidMaxDevicesReached": "You have reached the maximum number of devices for this subscription.",
+  "settings": "Settings"
 }

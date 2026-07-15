@@ -575,5 +575,8 @@
   "renew": "更新",
   "sendDeviceHeaders": "デバイスヘッダーを送信",
   "sendDeviceHeadersDesc": "HWIDとデバイス情報をサブスクリプションプロバイダに送信",
-  "support": "サポート"
+  "support": "サポート",
+  "hwidNotSupported": "サブスクリプションプロバイダはデバイス識別(HWID)を要求していますが、クライアントが送信しませんでした。設定で「デバイスヘッダーを送信」を有効にしてサブスクリプションを更新してください。",
+  "hwidMaxDevicesReached": "このサブスクリプションの最大デバイス数に達しました。",
+  "settings": "設定"
 }

@@ -6,12 +6,14 @@ import 'package:flclashx/common/common.dart';
 import 'package:flclashx/core/core.dart';
 import 'package:flclashx/database/database.dart';
 import 'package:flclashx/enum/enum.dart';
+import 'package:flclashx/l10n/l10n.dart';
 import 'package:flclashx/models/models.dart';
 import 'package:flclashx/plugins/app.dart';
 import 'package:flclashx/plugins/service.dart';
 import 'package:flclashx/providers/providers.dart';
 import 'package:flclashx/services/subscription_notification_service.dart';
 import 'package:flclashx/state.dart';
+import 'package:flclashx/views/views.dart';
 import 'package:flclashx/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -961,25 +963,74 @@ class ProfilesAction extends _$ProfilesAction {
 
   void _showHwidLimitNoticeIfNeeded(Profile profile) {
     final headers = profile.providerHeaders;
-    final showHwidLimit = headers['x-hwid-limit']?.toLowerCase() == 'true';
-    final announceText = headers['announce'];
-    if (!showHwidLimit || announceText == null || announceText.isEmpty) {
+    final l = currentAppLocalizations;
+    final notSupported =
+        headers['x-hwid-not-supported']?.toLowerCase() == 'true';
+    final maxDevicesReached =
+        headers['x-hwid-max-devices-reached']?.toLowerCase() == 'true' ||
+        headers['x-hwid-limit']?.toLowerCase() == 'true';
+    if (notSupported) {
+      _showHwidNotSupportedDialog(headers, l);
       return;
     }
+    if (maxDevicesReached) {
+      _showHwidMaxDevicesDialog(headers, l);
+    }
+  }
+
+  void _showHwidNotSupportedDialog(Map<String, String> headers, AppLocalizations l) {
     final supportUrl = headers['support-url'];
-    final l = currentAppLocalizations;
-    var textToDecode = announceText;
-    if (announceText.startsWith('base64:')) {
-      textToDecode = announceText.substring(7);
+    final context = globalState.navigatorKey.currentContext;
+    final actions = <Widget>[
+      if (context != null)
+        TextButton(
+          onPressed: () {
+            globalState.navigatorKey.currentState?.pop();
+            BaseNavigator.push(context, const ApplicationSettingView());
+          },
+          child: Text(l.settings),
+        ),
+      if (supportUrl != null && supportUrl.isNotEmpty)
+        TextButton(
+          onPressed: () {
+            globalState.navigatorKey.currentState?.pop();
+            globalState.openUrl(supportUrl);
+          },
+          child: Text(l.support),
+        ),
+      TextButton(
+        onPressed: () => globalState.navigatorKey.currentState?.pop(),
+        child: Text(l.confirm),
+      ),
+    ];
+    globalState.showCommonDialog(
+      child: CommonDialog(
+        title: l.tip,
+        actions: actions,
+        child: SingleChildScrollView(
+          child: SelectableText(l.hwidNotSupported),
+        ),
+      ),
+    );
+  }
+
+  void _showHwidMaxDevicesDialog(Map<String, String> headers, AppLocalizations l) {
+    final announceText = headers['announce'];
+    final supportUrl = headers['support-url'];
+    String body = l.hwidMaxDevicesReached;
+    if (announceText != null && announceText.isNotEmpty) {
+      var textToDecode = announceText;
+      if (announceText.startsWith('base64:')) {
+        textToDecode = announceText.substring(7);
+      }
+      try {
+        final normalized = base64.normalize(textToDecode);
+        body = utf8.decode(base64.decode(normalized));
+      } catch (_) {
+        body = announceText;
+      }
     }
-    String decoded;
-    try {
-      final normalized = base64.normalize(textToDecode);
-      decoded = utf8.decode(base64.decode(normalized));
-    } catch (_) {
-      decoded = announceText;
-    }
-    if (decoded.isEmpty) return;
+    if (body.isEmpty) return;
     final actions = <Widget>[];
     if (supportUrl != null && supportUrl.isNotEmpty) {
       actions.add(
@@ -1003,7 +1054,7 @@ class ProfilesAction extends _$ProfilesAction {
         title: l.tip,
         actions: actions,
         child: SingleChildScrollView(
-          child: SelectableText(decoded),
+          child: SelectableText(body),
         ),
       ),
     );

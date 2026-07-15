@@ -475,6 +475,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "hoursCount": m11,
     "hoursGenitive": MessageLookupByLibrary.simpleMessage("часов"),
     "hoursPlural": MessageLookupByLibrary.simpleMessage("часов"),
+    "hwidMaxDevicesReached": MessageLookupByLibrary.simpleMessage(
+      "Вы достигли максимального количества устройств для этой подписки.",
+    ),
+    "hwidNotSupported": MessageLookupByLibrary.simpleMessage(
+      "Провайдер подписки требует идентификацию устройства (HWID), но клиент её не отправил. Включите «Отправлять хедеры устройства» в настройках и обновите подписку.",
+    ),
     "icon": MessageLookupByLibrary.simpleMessage("Иконка"),
     "iconRecords": MessageLookupByLibrary.simpleMessage("История иконок"),
     "iconStyle": MessageLookupByLibrary.simpleMessage("Стиль иконки"),
