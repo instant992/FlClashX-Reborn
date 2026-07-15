@@ -23,6 +23,29 @@ class MainActivity : FlutterActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableHighRefreshRate()
+    }
+
+    @SuppressLint("WrongConstant")
+    private fun enableHighRefreshRate() {
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.R) return
+        try {
+            val display = display ?: return
+            var bestModeId = 0
+            var bestRate = 60f
+            for (mode in display.supportedModes) {
+                if (mode.refreshRate > bestRate) {
+                    bestRate = mode.refreshRate
+                    bestModeId = mode.modeId
+                }
+            }
+            if (bestModeId != 0) {
+                window.attributes = window.attributes.apply {
+                    preferredDisplayModeId = bestModeId
+                }
+            }
+        } catch (_: Exception) {
+        }
     }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
