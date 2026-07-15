@@ -217,7 +217,20 @@ Future<VM2<String, String>> _makeRealProfileTask(
     }
   }
   rawConfig['profile']['store-selected'] = false;
-  rawConfig['geox-url'] = realPatchConfig.geoXUrl.raw;
+  final patchGeoX = realPatchConfig.geoXUrl.raw;
+  final profileGeoX = rawConfig['geox-url'];
+  if (profileGeoX is Map) {
+    final merged = Map<String, String>.from(patchGeoX);
+    for (final key in ['mmdb', 'asn', 'geo-ip', 'geo-site', 'geoip', 'geosite']) {
+      final v = profileGeoX[key];
+      if (v is String && v.isNotEmpty) {
+        merged[key] = v;
+      }
+    }
+    rawConfig['geox-url'] = merged;
+  } else {
+    rawConfig['geox-url'] = patchGeoX;
+  }
   rawConfig['global-ua'] = realPatchConfig.globalUa ?? defaultUA;
   if (rawConfig['hosts'] == null) {
     rawConfig['hosts'] = {};

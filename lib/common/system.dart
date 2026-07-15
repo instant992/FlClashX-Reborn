@@ -31,6 +31,12 @@ class System {
 
   bool get isLinux => Platform.isLinux;
 
+  Future<bool> get isAndroidTV async {
+    if (!Platform.isAndroid) return false;
+    final deviceInfo = await DeviceInfoPlugin().androidInfo;
+    return deviceInfo.systemFeatures.contains('android.software.leanback');
+  }
+
   Future<int> get version async {
     final deviceInfo = await DeviceInfoPlugin().deviceInfo;
     return switch (Platform.operatingSystem) {

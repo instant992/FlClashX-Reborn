@@ -619,6 +619,22 @@ class SystemAction extends _$SystemAction {
     }
   }
 
+  Future<void> handleRestart() async {
+    if (system.isDesktop) {
+      try {
+        await Process.start(
+          Platform.resolvedExecutable,
+          [],
+          mode: ProcessStartMode.detached,
+        );
+      } catch (e) {
+        commonPrint.log('Failed to start new process: $e');
+        return;
+      }
+    }
+    await handleExit(true);
+  }
+
   Future<void> handleClose([bool exit = true]) async {
     if (!system.isDesktop) {
       if (ref.read(backBlockProvider)) return;
