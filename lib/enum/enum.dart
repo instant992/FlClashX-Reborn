@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:collection/collection.dart';
 import 'package:flclashx/common/context.dart';
 import 'package:flclashx/common/system.dart';
 import 'package:flclashx/views/dashboard/widgets/widgets.dart';
@@ -334,6 +335,22 @@ enum DashboardWidget {
       (item) => item.widget == gridItem,
     );
     return dashboardWidgets[index];
+  }
+
+  static List<DashboardWidget> parseLayout(String? layoutString) {
+    if (layoutString == null || layoutString.isEmpty) return [];
+    final widgetNames =
+        layoutString.split(',').map((e) => e.trim().toLowerCase()).toList();
+    final result = <DashboardWidget>[];
+    for (final name in widgetNames) {
+      final match = DashboardWidget.values.firstWhereOrNull(
+        (e) => e.name.toLowerCase() == name,
+      );
+      if (match != null) {
+        result.add(match);
+      }
+    }
+    return result;
   }
 }
 

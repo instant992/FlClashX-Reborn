@@ -872,3 +872,39 @@ String? backgroundUrl(Ref ref) {
   final headers = ref.watch(providerHeadersProvider);
   return headers['flclashx-background'];
 }
+
+@riverpod
+bool hasAnnounceData(Ref ref) {
+  final profile = ref.watch(currentProfileProvider);
+  final value = profile?.providerHeaders['announce'];
+  return value != null && value.isNotEmpty;
+}
+
+@riverpod
+bool hasServiceInfoData(Ref ref) {
+  final profile = ref.watch(currentProfileProvider);
+  final value = profile?.providerHeaders['flclashx-servicename'];
+  return value != null && value.isNotEmpty;
+}
+
+@riverpod
+bool hasServerInfoData(Ref ref) {
+  final profile = ref.watch(currentProfileProvider);
+  final value = profile?.providerHeaders['flclashx-serverinfo'];
+  return value != null && value.isNotEmpty;
+}
+
+@riverpod
+List<DashboardWidget> effectiveDashboardWidgets(Ref ref) {
+  final savedWidgets = ref.watch(
+    appSettingProvider.select((state) => state.dashboardWidgets),
+  );
+  final headers = ref.watch(providerHeadersProvider);
+  final layoutHeader = headers['flclashx-widgets'];
+  if (layoutHeader == null || layoutHeader.isEmpty) {
+    return savedWidgets;
+  }
+  final parsed = DashboardWidget.parseLayout(layoutHeader);
+  if (parsed.isEmpty) return savedWidgets;
+  return parsed;
+}

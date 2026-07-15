@@ -3307,3 +3307,175 @@ final class BackgroundUrlProvider
 }
 
 String _$backgroundUrlHash() => r'90e9370d1fbc3db0d34a3f191fdf7674b056fc54';
+
+@ProviderFor(hasAnnounceData)
+final hasAnnounceDataProvider = HasAnnounceDataProvider._();
+
+final class HasAnnounceDataProvider
+    extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
+  HasAnnounceDataProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'hasAnnounceDataProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$hasAnnounceDataHash();
+
+  @$internal
+  @override
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    return hasAnnounceData(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
+  }
+}
+
+String _$hasAnnounceDataHash() => r'518399bf6581fbf003d0fe26afbe9db97e6c0322';
+
+@ProviderFor(hasServiceInfoData)
+final hasServiceInfoDataProvider = HasServiceInfoDataProvider._();
+
+final class HasServiceInfoDataProvider
+    extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
+  HasServiceInfoDataProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'hasServiceInfoDataProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$hasServiceInfoDataHash();
+
+  @$internal
+  @override
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    return hasServiceInfoData(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
+  }
+}
+
+String _$hasServiceInfoDataHash() =>
+    r'055787255c43f3a469414256f73d41492a2752d3';
+
+@ProviderFor(hasServerInfoData)
+final hasServerInfoDataProvider = HasServerInfoDataProvider._();
+
+final class HasServerInfoDataProvider
+    extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
+  HasServerInfoDataProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'hasServerInfoDataProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$hasServerInfoDataHash();
+
+  @$internal
+  @override
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    return hasServerInfoData(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
+  }
+}
+
+String _$hasServerInfoDataHash() => r'9692b3a04a067504f58d8f6403ce9622fa02b003';
+
+@ProviderFor(effectiveDashboardWidgets)
+final effectiveDashboardWidgetsProvider = EffectiveDashboardWidgetsProvider._();
+
+final class EffectiveDashboardWidgetsProvider
+    extends
+        $FunctionalProvider<
+          List<DashboardWidget>,
+          List<DashboardWidget>,
+          List<DashboardWidget>
+        >
+    with $Provider<List<DashboardWidget>> {
+  EffectiveDashboardWidgetsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'effectiveDashboardWidgetsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$effectiveDashboardWidgetsHash();
+
+  @$internal
+  @override
+  $ProviderElement<List<DashboardWidget>> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  List<DashboardWidget> create(Ref ref) {
+    return effectiveDashboardWidgets(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<DashboardWidget> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<List<DashboardWidget>>(value),
+    );
+  }
+}
+
+String _$effectiveDashboardWidgetsHash() =>
+    r'b62cf1ad32230e12fc0f3f8c2720068ec340b95e';
