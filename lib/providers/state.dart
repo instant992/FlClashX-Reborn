@@ -82,6 +82,9 @@ UpdateParams updateParams(Ref ref) {
   final routeMode = ref.watch(
     networkSettingProvider.select((state) => state.routeMode),
   );
+  final headers = ref.watch(providerHeadersProvider);
+  final androidSecure =
+      system.isAndroid && headers['flclashx-androidsecure']?.toLowerCase() == 'true';
   return ref.watch(
     patchClashConfigProvider.select(
       (state) => UpdateParams(
@@ -94,7 +97,7 @@ UpdateParams updateParams(Ref ref) {
         tcpConcurrent: state.tcpConcurrent,
         externalController: state.externalController,
         unifiedDelay: state.unifiedDelay,
-        mixedPort: state.mixedPort,
+        mixedPort: androidSecure ? 0 : state.mixedPort,
         geoAutoUpdate: state.geoAutoUpdate,
         geoUpdateInterval: state.geoUpdateInterval,
       ),
@@ -1017,8 +1020,18 @@ ThemeProps effectiveTheme(Ref ref) {
 }
 
 @riverpod
+class GroupDescriptions extends _$GroupDescriptions
+    with AutoDisposeNotifierMixin {
+  @override
+  Map<String, String> build() {
+    return const {};
+  }
+}
+
+@riverpod
 AppSettingProps effectiveAppSetting(Ref ref) {
   final base = ref.watch(appSettingProvider);
+  if (base.overrideProviderSettings) return base;
   if (!ref.watch(shouldApplyHeaderSettingsProvider)) return base;
   final headers = ref.watch(providerHeadersProvider);
   final settingsHeader = headers['flclashx-settings'];

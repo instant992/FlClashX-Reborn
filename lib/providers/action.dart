@@ -294,6 +294,13 @@ class SetupAction extends _$SetupAction {
     final overrideDns = ref.read(overrideDnsProvider);
     final appendSystemDns = networkVM2.a;
     final routeMode = networkVM2.b;
+    final overrideNetworkSettings = ref.read(
+      appSettingProvider.select((state) => state.overrideNetworkSettings),
+    );
+    final headers = ref.read(providerHeadersProvider);
+    final androidSecure =
+        system.isAndroid &&
+        headers['flclashx-androidsecure']?.toLowerCase() == 'true';
     final configMap = await coreController.getConfig(profileId);
     String? scriptContent;
     final List<Rule> addedRules = [];
@@ -314,6 +321,20 @@ class SetupAction extends _$SetupAction {
     if (scriptContent?.isNotEmpty == true) {
       rawConfig = await handleEvaluate(scriptContent!, rawConfig);
     }
+    final groupDesc = <String, String>{};
+    final rawGroups = rawConfig['proxy-groups'];
+    if (rawGroups is List) {
+      for (final g in rawGroups) {
+        if (g is! Map) continue;
+        final name = g['name'];
+        if (name is! String) continue;
+        final desc = g['description'];
+        if (desc is String && desc.trim().isNotEmpty) {
+          groupDesc[name] = desc.trim();
+        }
+      }
+    }
+    ref.read(groupDescriptionsProvider.notifier).value = groupDesc;
     final directory = await appPath.profilesPath;
     final res = makeRealProfileTask(
       MakeRealProfileState(
@@ -327,6 +348,8 @@ class SetupAction extends _$SetupAction {
         appendSystemDns: appendSystemDns,
         addedRules: addedRules,
         defaultUA: defaultUA,
+        overrideNetworkSettings: overrideNetworkSettings,
+        androidSecure: androidSecure,
       ),
     );
     return res;

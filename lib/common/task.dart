@@ -102,6 +102,8 @@ Future<VM2<String, String>> _makeRealProfileTask(
   final addedRules = data.addedRules;
   final appendSystemDns = data.appendSystemDns;
   final defaultUA = data.defaultUA;
+  final overrideNetwork = data.overrideNetworkSettings;
+  final androidSecure = data.androidSecure;
   String getProvidersFilePathInner(String type, String url) {
     return join(
       profilesPath,
@@ -112,32 +114,64 @@ Future<VM2<String, String>> _makeRealProfileTask(
     );
   }
 
-  rawConfig['external-controller'] = realPatchConfig.externalController.value;
+  bool providerWins(String key) =>
+      !overrideNetwork && rawConfig[key] != null;
+
   rawConfig['external-ui'] = '';
   rawConfig['interface-name'] = '';
   rawConfig['external-ui-url'] = '';
-  rawConfig['tcp-concurrent'] = realPatchConfig.tcpConcurrent;
-  rawConfig['unified-delay'] = realPatchConfig.unifiedDelay;
-  rawConfig['ipv6'] = realPatchConfig.ipv6;
-  rawConfig['log-level'] = realPatchConfig.logLevel.name;
+  rawConfig['tcp-concurrent'] =
+      providerWins('tcp-concurrent')
+          ? rawConfig['tcp-concurrent']
+          : realPatchConfig.tcpConcurrent;
+  rawConfig['unified-delay'] =
+      providerWins('unified-delay')
+          ? rawConfig['unified-delay']
+          : realPatchConfig.unifiedDelay;
+  rawConfig['ipv6'] =
+      providerWins('ipv6') ? rawConfig['ipv6'] : realPatchConfig.ipv6;
+  rawConfig['log-level'] =
+      providerWins('log-level')
+          ? rawConfig['log-level']
+          : realPatchConfig.logLevel.name;
   rawConfig['port'] = 0;
   rawConfig['socks-port'] = 0;
-  rawConfig['keep-alive-interval'] = realPatchConfig.keepAliveInterval;
-  rawConfig['mixed-port'] = realPatchConfig.mixedPort;
+  rawConfig['keep-alive-interval'] =
+      providerWins('keep-alive-interval')
+          ? rawConfig['keep-alive-interval']
+          : realPatchConfig.keepAliveInterval;
+  rawConfig['mixed-port'] = androidSecure
+      ? 0
+      : (providerWins('mixed-port')
+            ? rawConfig['mixed-port']
+            : realPatchConfig.mixedPort);
   rawConfig['port'] = realPatchConfig.port;
   rawConfig['socks-port'] = realPatchConfig.socksPort;
   rawConfig['redir-port'] = realPatchConfig.redirPort;
   rawConfig['tproxy-port'] = realPatchConfig.tproxyPort;
-  rawConfig['find-process-mode'] = realPatchConfig.findProcessMode.name;
-  rawConfig['allow-lan'] = realPatchConfig.allowLan;
+  rawConfig['find-process-mode'] =
+      providerWins('find-process-mode')
+          ? rawConfig['find-process-mode']
+          : realPatchConfig.findProcessMode.name;
+  rawConfig['allow-lan'] =
+      providerWins('allow-lan')
+          ? rawConfig['allow-lan']
+          : realPatchConfig.allowLan;
   rawConfig['mode'] = realPatchConfig.mode.name;
+  final providerExternalController =
+      (rawConfig['external-controller'] as String?)?.trim() ?? '';
+  rawConfig['external-controller'] = providerExternalController.isNotEmpty
+      ? providerExternalController
+      : realPatchConfig.externalController.value;
   if (rawConfig['tun'] == null) {
     rawConfig['tun'] = {};
   }
   rawConfig['tun']['enable'] = realPatchConfig.tun.enable;
   rawConfig['tun']['device'] = realPatchConfig.tun.device;
   rawConfig['tun']['dns-hijack'] = realPatchConfig.tun.dnsHijack;
-  rawConfig['tun']['stack'] = realPatchConfig.tun.stack.name;
+  rawConfig['tun']['stack'] = (!overrideNetwork && rawConfig['tun']['stack'] != null)
+      ? rawConfig['tun']['stack']
+      : realPatchConfig.tun.stack.name;
   rawConfig['tun']['route-address'] = realPatchConfig.tun.routeAddress;
   rawConfig['tun']['auto-route'] = realPatchConfig.tun.autoRoute;
   rawConfig['geodata-loader'] = realPatchConfig.geodataLoader.name;

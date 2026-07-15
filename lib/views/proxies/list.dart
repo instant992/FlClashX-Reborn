@@ -501,9 +501,18 @@ class _ListHeaderState extends State<ListHeader> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                groupType,
-                                style: context.textTheme.labelMedium?.toLight,
+                              Consumer(
+                                builder: (_, ref, _) {
+                                  final desc = ref.watch(
+                                    groupDescriptionsProvider.select(
+                                      (state) => state[groupName],
+                                    ),
+                                  );
+                                  return Text(
+                                    desc ?? groupType,
+                                    style: context.textTheme.labelMedium?.toLight,
+                                  );
+                                },
                               ),
                               Flexible(
                                 flex: 1,

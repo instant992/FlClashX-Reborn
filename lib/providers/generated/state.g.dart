@@ -187,7 +187,7 @@ final class UpdateParamsProvider
   }
 }
 
-String _$updateParamsHash() => r'6f471ce2a4114291cc7dc725723911764c8c3cd9';
+String _$updateParamsHash() => r'9f36ace65b789960cf31052821872ceda51a5259';
 
 @ProviderFor(proxyState)
 final proxyStateProvider = ProxyStateProvider._();
@@ -3611,6 +3611,58 @@ final class EffectiveThemeProvider
 
 String _$effectiveThemeHash() => r'25e6f5d43a797895f3a86488848b2c25f372998c';
 
+@ProviderFor(GroupDescriptions)
+final groupDescriptionsProvider = GroupDescriptionsProvider._();
+
+final class GroupDescriptionsProvider
+    extends $NotifierProvider<GroupDescriptions, Map<String, String>> {
+  GroupDescriptionsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'groupDescriptionsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$groupDescriptionsHash();
+
+  @$internal
+  @override
+  GroupDescriptions create() => GroupDescriptions();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Map<String, String> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<Map<String, String>>(value),
+    );
+  }
+}
+
+String _$groupDescriptionsHash() => r'2711a85cc378b44b8b62d79bec632ff53d5621a5';
+
+abstract class _$GroupDescriptions extends $Notifier<Map<String, String>> {
+  Map<String, String> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<Map<String, String>, Map<String, String>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<Map<String, String>, Map<String, String>>,
+              Map<String, String>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}
+
 @ProviderFor(effectiveAppSetting)
 final effectiveAppSettingProvider = EffectiveAppSettingProvider._();
 
@@ -3652,4 +3704,4 @@ final class EffectiveAppSettingProvider
 }
 
 String _$effectiveAppSettingHash() =>
-    r'5e6b2ac0b7397c836b17fab00eb7eda4c1670ba9';
+    r'062b2f05fad3d67f1122f3a7a86b5ecff1a0b7b0';

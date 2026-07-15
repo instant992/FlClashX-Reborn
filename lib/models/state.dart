@@ -345,6 +345,8 @@ abstract class MakeRealProfileState with _$MakeRealProfileState {
     required List<Rule> rules,
     required List<Rule> addedRules,
     required String defaultUA,
+    @Default(false) bool overrideNetworkSettings,
+    @Default(false) bool androidSecure,
   }) = _MakeRealProfileState;
 }
 
