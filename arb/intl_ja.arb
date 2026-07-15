@@ -574,5 +574,6 @@
   "subscriptionExpiresInDays": "サブスクリプションは{days}日後に期限切れになります",
   "renew": "更新",
   "sendDeviceHeaders": "デバイスヘッダーを送信",
-  "sendDeviceHeadersDesc": "HWIDとデバイス情報をサブスクリプションプロバイダに送信"
+  "sendDeviceHeadersDesc": "HWIDとデバイス情報をサブスクリプションプロバイダに送信",
+  "support": "サポート"
 }

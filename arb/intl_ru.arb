@@ -574,5 +574,6 @@
   "subscriptionExpiresInDays": "Ваша подписка истекает через {days} дн.",
   "renew": "Продлить",
   "sendDeviceHeaders": "Отправлять хедеры устройства",
-  "sendDeviceHeadersDesc": "Отправлять HWID и инфо об устройстве провайдеру подписки"
+  "sendDeviceHeadersDesc": "Отправлять HWID и инфо об устройстве провайдеру подписки",
+  "support": "Поддержка"
 }

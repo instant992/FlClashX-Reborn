@@ -4,6 +4,7 @@ import 'package:flclashx/providers/providers.dart';
 import 'package:flclashx/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class _ProviderManagedBox extends ConsumerWidget {
   final Widget child;
@@ -310,6 +311,51 @@ class AutoCheckUpdateItem extends ConsumerWidget {
   }
 }
 
+class SendHeadersToggle extends StatefulWidget {
+  const SendHeadersToggle({super.key});
+
+  @override
+  State<SendHeadersToggle> createState() => _SendHeadersToggleState();
+}
+
+class _SendHeadersToggleState extends State<SendHeadersToggle> {
+  bool _value = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadValue();
+  }
+
+  Future<void> _loadValue() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (mounted) {
+      setState(() {
+        _value = prefs.getBool('sendDeviceHeaders') ?? true;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final appLocalizations = context.appLocalizations;
+    return ListItem.switchItem(
+      title: Text(appLocalizations.sendDeviceHeaders),
+      subtitle: Text(appLocalizations.sendDeviceHeadersDesc),
+      delegate: SwitchDelegate(
+        value: _value,
+        onChanged: (bool value) async {
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setBool('sendDeviceHeaders', value);
+          setState(() {
+            _value = value;
+          });
+        },
+      ),
+    );
+  }
+}
+
 class ApplicationSettingView extends StatelessWidget {
   const ApplicationSettingView({super.key});
 
@@ -328,6 +374,7 @@ class ApplicationSettingView extends StatelessWidget {
       const OpenLogsItem(),
       const CloseConnectionsItem(),
       const UsageItem(),
+      const SendHeadersToggle(),
       if (system.isAndroid) const CrashlyticsItem(),
       const _ProviderManagedBox(child: AutoCheckUpdateItem()),
     ];

@@ -574,5 +574,6 @@
   "subscriptionExpiresInDays": "Your subscription expires in {days} days",
   "renew": "Renew",
   "sendDeviceHeaders": "Send device headers",
-  "sendDeviceHeadersDesc": "Send HWID and device info to the subscription provider"
+  "sendDeviceHeadersDesc": "Send HWID and device info to the subscription provider",
+  "support": "Support"
 }

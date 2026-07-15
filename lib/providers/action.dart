@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flclashx/common/common.dart';
@@ -11,6 +12,7 @@ import 'package:flclashx/plugins/service.dart';
 import 'package:flclashx/providers/providers.dart';
 import 'package:flclashx/services/subscription_notification_service.dart';
 import 'package:flclashx/state.dart';
+import 'package:flclashx/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -930,6 +932,7 @@ class ProfilesAction extends _$ProfilesAction {
           currentAppLocalizations,
         ),
       );
+      _showHwidLimitNoticeIfNeeded(newProfile);
       if (profile.id == ref.read(currentProfileIdProvider)) {
         ref
             .read(setupActionProvider.notifier)
@@ -938,6 +941,56 @@ class ProfilesAction extends _$ProfilesAction {
     } finally {
       ref.read(isUpdatingProvider(profile.updatingKey).notifier).value = false;
     }
+  }
+
+  void _showHwidLimitNoticeIfNeeded(Profile profile) {
+    final headers = profile.providerHeaders;
+    final showHwidLimit = headers['x-hwid-limit']?.toLowerCase() == 'true';
+    final announceText = headers['announce'];
+    if (!showHwidLimit || announceText == null || announceText.isEmpty) {
+      return;
+    }
+    final supportUrl = headers['support-url'];
+    final l = currentAppLocalizations;
+    var textToDecode = announceText;
+    if (announceText.startsWith('base64:')) {
+      textToDecode = announceText.substring(7);
+    }
+    String decoded;
+    try {
+      final normalized = base64.normalize(textToDecode);
+      decoded = utf8.decode(base64.decode(normalized));
+    } catch (_) {
+      decoded = announceText;
+    }
+    if (decoded.isEmpty) return;
+    final actions = <Widget>[];
+    if (supportUrl != null && supportUrl.isNotEmpty) {
+      actions.add(
+        TextButton(
+          onPressed: () {
+            globalState.navigatorKey.currentState?.pop();
+            globalState.openUrl(supportUrl);
+          },
+          child: Text(l.support),
+        ),
+      );
+    }
+    actions.add(
+      TextButton(
+        onPressed: () => globalState.navigatorKey.currentState?.pop(),
+        child: Text(l.confirm),
+      ),
+    );
+    globalState.showCommonDialog(
+      child: CommonDialog(
+        title: l.tip,
+        actions: actions,
+        child: SingleChildScrollView(
+          child: SelectableText(decoded),
+        ),
+      ),
+    );
   }
 
   Future<void> addProfileFormFile() async {

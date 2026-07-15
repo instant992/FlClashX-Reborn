@@ -574,5 +574,6 @@
   "subscriptionExpiresInDays": "您的订阅将在 {days} 天后到期",
   "renew": "续费",
   "sendDeviceHeaders": "发送设备头信息",
-  "sendDeviceHeadersDesc": "向订阅提供商发送 HWID 和设备信息"
+  "sendDeviceHeadersDesc": "向订阅提供商发送 HWID 和设备信息",
+  "support": "支持"
 }
