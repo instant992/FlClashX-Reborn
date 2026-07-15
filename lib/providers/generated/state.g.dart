@@ -3226,6 +3226,48 @@ final class ProviderHeadersProvider
 
 String _$providerHeadersHash() => r'a1f025cf3e96c99b7c87071bc1a8d9119523b4f4';
 
+@ProviderFor(shouldApplyHeaderSettings)
+final shouldApplyHeaderSettingsProvider = ShouldApplyHeaderSettingsProvider._();
+
+final class ShouldApplyHeaderSettingsProvider
+    extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
+  ShouldApplyHeaderSettingsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'shouldApplyHeaderSettingsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$shouldApplyHeaderSettingsHash();
+
+  @$internal
+  @override
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    return shouldApplyHeaderSettings(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<bool>(value),
+    );
+  }
+}
+
+String _$shouldApplyHeaderSettingsHash() =>
+    r'5bc7740eef36ab20ddcdfd19cb8d759043712d53';
+
 @ProviderFor(globalModeEnabled)
 final globalModeEnabledProvider = GlobalModeEnabledProvider._();
 
@@ -3526,7 +3568,7 @@ final class EffectiveProxiesStyleProvider
 }
 
 String _$effectiveProxiesStyleHash() =>
-    r'fc352bf774f801d8c8f24a194106c60baf467083';
+    r'c178526edf7f4a68b36198b98bb974832f1c3a19';
 
 @ProviderFor(effectiveTheme)
 final effectiveThemeProvider = EffectiveThemeProvider._();
@@ -3567,7 +3609,7 @@ final class EffectiveThemeProvider
   }
 }
 
-String _$effectiveThemeHash() => r'8b78a434d76190e3ffc108d29215fdd6bb70ed99';
+String _$effectiveThemeHash() => r'25e6f5d43a797895f3a86488848b2c25f372998c';
 
 @ProviderFor(effectiveAppSetting)
 final effectiveAppSettingProvider = EffectiveAppSettingProvider._();
@@ -3610,4 +3652,4 @@ final class EffectiveAppSettingProvider
 }
 
 String _$effectiveAppSettingHash() =>
-    r'dbfade1688a48e00fad62eb20c0fc49d57d94c3f';
+    r'5e6b2ac0b7397c836b17fab00eb7eda4c1670ba9';

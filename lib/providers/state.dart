@@ -862,6 +862,13 @@ Map<String, String> providerHeaders(Ref ref) {
 }
 
 @riverpod
+bool shouldApplyHeaderSettings(Ref ref) {
+  final headers = ref.watch(providerHeadersProvider);
+  final custom = headers['flclashx-custom']?.toLowerCase();
+  return custom == 'add' || custom == 'update';
+}
+
+@riverpod
 bool globalModeEnabled(Ref ref) {
   final headers = ref.watch(providerHeadersProvider);
   final value = headers['flclashx-globalmode'];
@@ -913,6 +920,7 @@ List<DashboardWidget> effectiveDashboardWidgets(Ref ref) {
 @riverpod
 ProxiesStyleProps effectiveProxiesStyle(Ref ref) {
   final base = ref.watch(proxiesStyleSettingProvider);
+  if (!ref.watch(shouldApplyHeaderSettingsProvider)) return base;
   final headers = ref.watch(providerHeadersProvider);
   final viewHeader = headers['flclashx-view'];
   if (viewHeader == null || viewHeader.isEmpty) return base;
@@ -974,6 +982,7 @@ ProxiesStyleProps effectiveProxiesStyle(Ref ref) {
 @riverpod
 ThemeProps effectiveTheme(Ref ref) {
   final base = ref.watch(themeSettingProvider);
+  if (!ref.watch(shouldApplyHeaderSettingsProvider)) return base;
   final headers = ref.watch(providerHeadersProvider);
   final hexHeader = headers['flclashx-hex'];
   if (hexHeader == null || hexHeader.isEmpty) return base;
@@ -1010,6 +1019,7 @@ ThemeProps effectiveTheme(Ref ref) {
 @riverpod
 AppSettingProps effectiveAppSetting(Ref ref) {
   final base = ref.watch(appSettingProvider);
+  if (!ref.watch(shouldApplyHeaderSettingsProvider)) return base;
   final headers = ref.watch(providerHeadersProvider);
   final settingsHeader = headers['flclashx-settings'];
   if (settingsHeader == null || settingsHeader.isEmpty) return base;
