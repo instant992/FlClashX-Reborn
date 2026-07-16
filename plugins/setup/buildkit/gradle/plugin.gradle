@@ -16,9 +16,23 @@ def archArgs = androidArch
         ? ['--arch', androidArch]
         : (targetPlatform ? ['--target-platform', targetPlatform.toString()] : [])
 
+// On Windows, 'bash' resolves to WSL's C:\Windows\System32\bash.exe which
+// cannot run MSYS shell scripts. Resolve Git Bash from the git executable.
+def bashExe = 'bash'
+if (System.getProperty('os.name').toLowerCase().contains('windows')) {
+    def gitExe = ['where', 'git'].execute().text.trim().split('\n')[0].trim()
+    if (gitExe && new File(gitExe).exists()) {
+        def gitBin = new File(gitExe).canonicalFile.parentFile.parentFile
+        def gitBash = new File(gitBin, 'bin/bash.exe')
+        if (gitBash.exists()) {
+            bashExe = gitBash.absolutePath
+        }
+    }
+}
+
 task buildGoCore(type: Exec) {
     workingDir buildkitDir
-    commandLine 'bash', launcher, 'android', *archArgs
+    commandLine bashExe, launcher, 'android', *archArgs
 
     environment 'ANDROID_NDK', androidNdk
     environment 'APP_ENV', project.hasProperty('appEnv') ? project.appEnv : 'pre'

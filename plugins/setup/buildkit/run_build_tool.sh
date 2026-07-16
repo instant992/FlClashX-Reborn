@@ -4,6 +4,16 @@ set -e
 
 echo "warning: [setup] Plugin triggered"
 
+# Convert a path to native (Windows) form when running under Git Bash,
+# so Windows-native Dart can consume it. On Linux/macOS this is a no-op.
+to_native() {
+  if command -v cygpath >/dev/null 2>&1; then
+    cygpath -m "$1"
+  else
+    echo "$1"
+  fi
+}
+
 BASEDIR=$(cd "$(dirname "$0")" && pwd)
 PROJECT_DIR="${PROJECT_DIR:-$(pwd)}"
 
@@ -24,6 +34,9 @@ else
   DART="$FLUTTER_ROOT/bin/cache/dart-sdk/bin/dart"
 fi
 
+# Windows-native paths for pubspec path: dependency (Dart is a Windows binary).
+BUILD_TOOL_PKG_DIR_NATIVE=$(to_native "$BUILD_TOOL_PKG_DIR")
+
 cat << EOF > "pubspec.yaml"
 name: setup_build_tool_runner
 version: 1.0.0
@@ -34,7 +47,7 @@ environment:
 
 dependencies:
   build_tool:
-    path: "$BUILD_TOOL_PKG_DIR"
+    path: "$BUILD_TOOL_PKG_DIR_NATIVE"
 EOF
 
 mkdir -p "bin"

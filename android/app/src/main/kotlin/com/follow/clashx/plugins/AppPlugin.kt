@@ -257,7 +257,7 @@ class AppPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware 
         val builder = NotificationCompat.Builder(
             app, GlobalState.SUBSCRIPTION_NOTIFICATION_CHANNEL
         )
-            .setSmallIcon(R.drawable.ic_service)
+            .setSmallIcon(com.follow.clashx.service.R.drawable.ic_service)
             .setContentTitle(title)
             .setContentText(message)
             .setAutoCancel(true)
